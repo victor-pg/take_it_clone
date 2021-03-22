@@ -1,0 +1,23 @@
+{
+  "name": "take_it_clone",
+  "version": "1.0.0",
+  "description": "\"clone of site : takeit.md\"",
+  "main": "index.js",
+  "author": "\"Poalelungi Victor <victor.poalelungi1@gmail.com>\"",
+  "license": "MIT",
+  "scripts": {
+    "server": "node index.js",
+    "dev-server": "nodemon index.js",
+    "client": "yarn --cwd client/ start",
+    "start": " \"yarn dev-server\" \"yarn client\" "
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.1",
+    "node-sass": "^5.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0",
+    "nodemon": "^2.0.7"
+  }
+}
