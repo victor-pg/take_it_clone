@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {Link as ScrollLink} from 'react-scroll'
 import {FaFacebook} from 'react-icons/fa';
 import {FaInstagram} from 'react-icons/fa';
 import './Navbar.scss';
@@ -13,12 +14,12 @@ const Navbar = () => {
             </div>
             <div>
                 <ul className="nav-items">
-                    <li><Link to="/">Serviciile noastre</Link></li>
-                    <li><Link to="/test">Clientii nostri</Link></li>
+                    <li><ScrollLink to="services" spy={true} smooth={true}>Serviciile noastre</ScrollLink></li>
+                    <li><ScrollLink to="client" spy={true} smooth={true}>Clientii nostri</ScrollLink></li>
                     <li><Link to="/catalog">Catalog</Link></li>
                     <li><FaFacebook className="icon-size" /></li>
                     <li><FaInstagram className="icon-size" /></li>
-                    <li><a href="#"><button>Primiti oferta dvs.</button></a></li>
+                    <li><a><button>Primiti oferta dvs.</button></a></li>
                 </ul>
             </div>
         </nav>

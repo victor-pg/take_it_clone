@@ -1,0 +1,51 @@
+.services-section {
+    width: 100%;
+    height: 100vh;
+    font-family: "Roboto", sans-serif;
+    padding-top: 20px;
+
+    .services-section-title {
+        color: black;
+        font-size: 40px;
+        text-align: center;
+        font-weight: 500;
+    }
+    .services-section-subtitle {
+        font-weight: 300;
+        font-size: 25px;
+        width: 45%;
+        margin: 0 auto;
+        margin-top: 50px;
+        text-align: center;
+    }
+    .flex-reverse{
+        flex-direction: row-reverse;
+    }
+    .services-section-row{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Roboto',sans-serif;
+        margin-top: 100px;
+        
+
+        img{
+            width:45%;
+            object-fit: scale-down;
+        }
+
+        div{
+            width:45%;
+        }
+
+        .services-section-text-title{
+            font-size: 25px;
+            font-weight: 500;
+        }
+        .services-section-text-subtitle{
+            font-weight: 300;
+            font-size: 20px;
+            margin-top: 25px;
+        }
+    }
+}
