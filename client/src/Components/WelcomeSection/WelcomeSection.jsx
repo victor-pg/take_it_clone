@@ -4,7 +4,6 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import './WelcomeSection.scss';
 
 const WelcomeSection = () => {
-    console.log(process.env.PUBLIC_URL)
     return (
         <div className="welcome-section" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/homepage.jpg)` }}>
             <div className="black-overlay"></div>

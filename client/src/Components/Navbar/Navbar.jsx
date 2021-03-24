@@ -19,7 +19,7 @@ const Navbar = () => {
                     <li><Link to="/catalog">Catalog</Link></li>
                     <li><FaFacebook className="icon-size" /></li>
                     <li><FaInstagram className="icon-size" /></li>
-                    <li><a><button>Primiti oferta dvs.</button></a></li>
+                    <li><button>Primiti oferta dvs.</button></li>
                 </ul>
             </div>
         </nav>
