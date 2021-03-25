@@ -1,0 +1,32 @@
+.partners-section {
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+    padding-top: 100px;
+
+    .container {
+        .partners-section-title {
+            font-weight: 500;
+            font-size: 52px;
+            text-align: center;
+        }
+        .partners-section-subtitle {
+            font-weight: 300;
+            font-size: 26px;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .partners-section-images{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-flow: row wrap;
+            padding-top: 50px;
+
+            .partners-image{
+                width: 320px;
+                object-fit: cover;
+            }
+        }
+    }
+}

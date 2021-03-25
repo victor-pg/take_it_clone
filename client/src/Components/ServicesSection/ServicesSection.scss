@@ -1,6 +1,6 @@
 .services-section {
     width: 100%;
-    height: 100vh;
+    // height: 100vh;
     font-family: "Roboto", sans-serif;
     padding-top: 20px;
 
@@ -49,4 +49,42 @@
             margin-top: 25px;
         }
     }
+    .service-section-end-text{
+        padding-top:40px;
+        font-weight: 300;
+        width: 85%;
+        text-align: center;
+        font-size: 30px;
+        margin:0 auto;
+    }
+    .service-section-end-icons{
+        padding-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        *{
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            margin:10px;
+        }
+    }
+    .arrow-up{
+        width: 50px;
+        height: 50px;
+        color:white;
+        background-color: #38ba22;
+        border-radius: 50%;
+        position: fixed;
+        top: 50%;
+        right: 1%;
+
+        &:hover{
+            background-color: white;
+            color:#38ba22;
+            cursor: pointer;
+        }
+    }
 }
+

@@ -1,0 +1,10 @@
+.clients-section{
+    display:flex;
+    justify-content: space-between;
+    padding-top: 100px;
+    padding-bottom: 50px;
+
+    .clients-image-size{
+        width:32%;
+    }
+}

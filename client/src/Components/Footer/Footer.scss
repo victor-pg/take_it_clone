@@ -1,0 +1,66 @@
+footer{
+    width: 100%;
+    font-family: 'Roboto',sans-serif;
+
+    .comunicare{
+        background-color: #f3f3f3;
+        font-weight: 300;
+        font-size: 22px;
+        height: 200px;
+        
+        .container{
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            button{
+                background-color: #38ba22;
+                color:white;
+                border:none;
+                padding:20px 60px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+    }
+    .number{
+        width: 100%;
+        height: 500px;
+        background-color: #242424;
+        color:white;
+
+        .container{
+            height: 100%;
+            width: 100%;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .footer-title{
+                font-size: 16px;
+                font-weight: 600;
+                padding-bottom: 50px;
+            }
+            .footer-email,.footer-number{
+                font-weight: 300;
+                font-size: 36px;
+            }
+            .footer-icons{
+                padding-top: 50px;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+
+                *{
+                    margin:5px;
+                    width:48px;
+                    height: 48px;
+                }
+            }
+        }
+
+    }
+}

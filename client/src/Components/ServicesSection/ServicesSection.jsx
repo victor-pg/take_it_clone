@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FaFacebook } from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
+import { AiOutlineArrowUp } from 'react-icons/ai';
+
 import './ServicesSection.scss';
 
 const ServicesSection = () => {
+
+    const [showScroll, setShowScroll] = useState(false)
+    const checkScrollTop = () => {
+        if (!showScroll && window.pageYOffset > 400) {
+            setShowScroll(true)
+        } else if (showScroll && window.pageYOffset <= 400) {
+            setShowScroll(false)
+        }
+    };
+    window.addEventListener('scroll', checkScrollTop)
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    console.log('render');
     return (
         <div className="services-section container" id="services">
             <p className="services-section-title">Serviciile noastre</p>
@@ -26,6 +45,18 @@ const ServicesSection = () => {
                     <p className="services-section-text-title">Service Centru Specializat</p>
                     <p className="services-section-text-subtitle">Angajații Call-centre vor răspunde la întrebările apărute și vor soluționa rapid deranjamentele. Tehnicienii noștri de înaltă calificare vor oferi servicii de garanție și post-garanție pentru echipamente noi și existente, documentație și alte aspecte importante ale muncii pentru companie dvs. Un grup operativ de tehnicieni este întotdeauna la dispoziția dumneavoastră.</p>
                 </div>
+            </div>
+            <p className="service-section-end-text">
+                Suntem partenerul dvs, vă oferim o serie de soluții complexe pentru automatizarea afacerii și imbunătățirea efecienței personalului, precum și sporirea loialității clienților dvs.
+            </p>
+            <div className="service-section-end-icons">
+                <FaFacebook className="icon-size" />
+                <FaInstagram className="icon-size" />
+            </div>
+            <div>
+                <AiOutlineArrowUp className="arrow-up" onClick={scrollToTop}
+                    style={{height: 40, display: showScroll ? '' : 'none'}}
+                />
             </div>
         </div>
     );
