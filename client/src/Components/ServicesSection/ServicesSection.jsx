@@ -20,7 +20,6 @@ const ServicesSection = () => {
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    console.log('render');
     return (
         <div className="services-section container" id="services">
             <p className="services-section-title">Serviciile noastre</p>

@@ -1,0 +1,45 @@
+.catalog-item-details{
+    font-family: 'Roboto',sans-serif;
+    width:100%;
+    height: 100vh;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+
+    .back-button{
+        display:block;
+        position: absolute;
+        left: 20px;top: 20px;
+
+        button{
+            background-color: #37985e;
+            border:none;
+            border-radius: 5px;
+            color:white;
+            padding:10px 20px;
+            cursor: pointer;
+        }
+    }
+    .details-image{
+        // height: 100%;
+        width:45%;
+        img{
+            width:100%;
+            object-fit: scale-down;
+        }
+    }
+    .details-text{
+        width:45%;
+        .details-text-title{
+            font-size: 24px;
+            font-weight: 700;
+            padding-bottom: 50px;
+        }
+        .details-text-description{
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 22px;
+        }
+    }
+}

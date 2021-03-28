@@ -1,14 +1,15 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route,Redirect } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import MainPage from './Components/MainPage/MainPage'
-
+import CatalogPage from './Components/CatalogPage/CatalogPage';
+import CatalogItemDetails from './Components/CatalogItemDetails/CatalogItemDetails';
 const MainContainer = () => {
     return (
         <div>
             <Navbar />
             <Route path="/" exact component={MainPage} />
-            <Route path="/test" exact component={() => <h1>TestPage</h1>} />
+            <Redirect to="/" />
         </div>
     );
 }
@@ -16,7 +17,8 @@ const Routes = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/catalog" exact component={() => <h1>Catalog</h1>} />
+                <Route path="/catalog" exact component={CatalogPage} />
+                <Route path="/details/:id" exact component={({match})=><CatalogItemDetails id={match.params.id} />} />
                 <Route path="/" component={MainContainer} />
             </Switch>
         </BrowserRouter>
