@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style-type: none;
+}
+.icon-size {
+    width: 30px;
+    height: 30px;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 980px) {
+    .container {
+        width: 100%;
+    }
+    .welcome-section {
+        overflow: hidden;
+    }
+    .welcome-section-title {
+        font-size: 36px !important;
+    }
+    .nav-mobile-head {
+        position: absolute;
+        top: 0;
+        transform: translateX(-100%);
+        width: 100%;
+        height: 60px;
+        background-color: #111111;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+    nav {
+        flex-direction: column;
+        height: 100vh;
+        transform: translateX(100%);
+        position: absolute;
+        background-color: #524f4f;
+        // right: -100%;
+    }
+    .block-with-nav-items {
+        width: 100%;
+        height: 50%;
+    }
+    .nav-items {
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+    }
+    .logo img {
+        max-width: 200px;
+        padding-top: 50px;
+    }
+    .dot {
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        margin-top: 7px;
+        margin-right: 20px;
+        transition: all 300ms ease-in;
+    }
+    .show-nav-header {
+        transform: translateX(0%);
+        transition: all 300ms ease-in;
+
+        .burger {
+            .dot:first-child {
+                transform: rotate(30deg);
+                position: absolute;
+                transition: all 300ms ease-in;
+            }
+            .dot:nth-child(2) {
+                transform: rotate(-30deg);
+                transition: all 300ms ease-in;
+            }
+            .dot:last-child {
+                display: none;
+                transition: all 300ms ease-in;
+            }
+        }
+    }
+    .show-nav-content {
+        position: inherit;
+        transform: translateX(0%);
+        transition: all 300ms ease-in;
+    }
+    .navbar {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        overflow: hidden;
+    }
+    .p-inherit {
+        position: inherit;
+    }
+
+    // welcome section
+
+    .welcome-section {
+        .welcome-section-content {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .welcome-section-title {
+            font-size: 34px !important;
+            width:80%;
+        }
+        .welcome-section-subtitle {
+            font-size: 16px !important;
+            width: 100%;
+        }
+    }
+
+    // services section
+    .services-section{
+        overflow-x: hidden;
+        .services-section-title{
+            overflow-x: hidden;
+
+            font-size: 30px;
+            font-weight: 600;
+        }
+        .services-section-subtitle{
+            width:100%;
+            overflow-x: hidden;
+            font-size: 20px;
+            line-height: 1.4;
+        }
+        .services-section-row{
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width:100%;
+
+            img:first-child{
+                height: 215px;
+            }
+
+            img{
+                max-width:100%;
+                min-width: 320px;
+                height: auto;
+                max-height: 450px;
+            }
+            div {
+                width:100%;
+                text-align: center;
+            }
+            .services-section-text-title{
+                width:100%;
+                font-size:22px;
+                font-weight: 600;
+                padding-top: 30px;
+            }
+            .services-section-text-subtitle{
+                width: 100%;
+                font-size: 14px;
+                font-weight: 300;
+            }
+        }
+        .service-section-end-text{
+            font-size: 22px !important;
+            font-weight: 300;
+            text-align: center;
+        }
+    }
+
+    // clients section
+
+    .clients-section{
+        flex-direction: column;
+        align-items: center;
+        img{
+            min-width: 320px;
+            width:100%;
+            height: auto;
+        }
+    }
+
+    // about section    
+
+    .about-section{
+        .about-section-title{
+            font-size: 30px;
+            font-weight: 600;
+            width:100%
+        }
+        .about-section-subtitle{
+            font-size: 20px;
+            font-weight: 300;
+            width:100%;
+        }
+        .about-section-benefits{
+            flex-direction: column;
+
+            .about-section-benefits-item{
+                margin-top: 20px;
+                
+                .benefits-title{
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+                .benefits-subtitle{
+                    font-size: 12px;
+                    font-weight: 300;
+                }
+            }
+        }
+        .about-section-last-info{
+            width:100%;
+        }
+    }
+    .partners-section{
+        .partners-section-title{
+            font-size: 30px !important;
+        }
+        .partners-section-subtitle{
+            font-size: 20px !important;
+            font-weight: 300;
+        }
+        .partners-section-images{
+            justify-content: center !important;
+        }
+    }
+    // footer
+
+    footer{
+        .comunicare{
+            .container{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                p{
+                    font-size: 18px;
+                    text-align: center;
+                    width:100%;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+        .footer-title{
+            font-size: 12px !important;
+            font-weight: 600;
+        }
+        .footer-email,.footer-number{
+            font-size: 28px !important;
+        }
+    }
+}

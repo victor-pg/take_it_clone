@@ -52,7 +52,7 @@ const ServicesSection = () => {
                 <FaFacebook className="icon-size" />
                 <FaInstagram className="icon-size" />
             </div>
-            <div>
+            <div className="arrow-up-block">
                 <AiOutlineArrowUp className="arrow-up" onClick={scrollToTop}
                     style={{height: 40, display: showScroll ? '' : 'none'}}
                 />
