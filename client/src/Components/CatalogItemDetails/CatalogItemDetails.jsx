@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Loader from '../Loader/Loader';
 
 import './CatalogItemDetails.scss';
 
@@ -28,7 +29,7 @@ const CatalogItemDetails = ({ id }) => {
             </div>
         );
     } else {
-        return <h1>Loading...</h1>
+        return <Loader align={"center"} />
     }
 }
 

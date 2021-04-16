@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link as ScrollLink} from 'react-scroll'
 import { MdKeyboardArrowDown } from 'react-icons/md';
+
 import './WelcomeSection.scss';
 
 const WelcomeSection = () => {
