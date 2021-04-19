@@ -15,7 +15,11 @@
     "express": "^4.17.1",
     "mongoose": "^5.12.1",
     "node-sass": "^5.0.0",
-    "react-modal": "^3.13.1"
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
+    "react-modal": "^3.13.1",
+    "sequelize": "^6.6.2",
+    "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
     "concurrently": "^6.0.0",

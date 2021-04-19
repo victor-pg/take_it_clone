@@ -1,0 +1,23 @@
+.news-item{
+    width:30%;
+    font-family: 'Roboto',sans-serif;
+    display:flex;
+    flex-direction: column;
+
+    .news-img-wrapper{
+        width:100%;
+        height: 250px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .news-item-title{
+        font-weight: 600;
+        font-size: 20px;
+        padding-top: 20px;
+    }
+    .news-item-subtitle{
+        font-weight: 300;
+        font-size: 18px;
+        padding-top: 10px;
+    }
+}
