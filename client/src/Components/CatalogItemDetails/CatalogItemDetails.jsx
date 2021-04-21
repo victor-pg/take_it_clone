@@ -17,20 +17,31 @@ const CatalogItemDetails = ({ id }) => {
 
     }, [id])
 
+
+
     if (!loading) {
         return (
-            <div className="catalog-item-details">
-                <Link to="/catalog" className="back-button"><button>Inapoi</button></Link>
-                <div className="details-image"><img src={process.env.PUBLIC_URL + '/img/' + item.imgUrl} alt={item.name} /></div>
-                <div className="details-text">
-                    <p className="details-text-title">{item.name}</p>
-                    <p className="details-text-description">{item.description}</p>
-                </div>
-            </div>
+            <>
+                {
+                    item.map(obj => {
+                        return (
+                            <div className="catalog-item-details" key={obj.id}>
+                                <Link to="/catalog" className="back-button"><button>Înapoi</button></Link>
+                                <div className="details-image"><img src={process.env.PUBLIC_URL + '/img/products/' + obj.imgurl} alt={obj.name} /></div>
+                                <div className="details-text">
+                                    <p className="details-text-title">{obj.name}</p>
+                                    <p className="details-text-description">{obj.description}</p>
+                                </div>
+                            </div>
+                        );
+                    })
+                }
+            </>
         );
     } else {
         return <Loader align={"center"} />
     }
+
 }
 
 export default CatalogItemDetails;

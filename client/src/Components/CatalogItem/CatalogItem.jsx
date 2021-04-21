@@ -7,9 +7,10 @@ const CatalogItem = ({ item }) => {
     return (
         <div className="catalog-item">
             {/* <img src={process.env.PUBLIC_URL + '/img/' + item.imgUrl} alt={item.name} /> */}
-            <div className="catalog-item-img" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/${item.imgUrl})` }}></div>
+            <div className="catalog-item-img" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/products/${item.imgurl})` }}></div>
             <p className="catalog-item-name">{item.name}</p>
-            <Link to={`/details/${item._id}`} params={{id:item._id}} >
+            <div className="catalog-item-short-desc">{item.short_desc}</div>
+            <Link to={`/details/${item.id}`} params={{id:item.id}} >
                 <button className="catalog-item-button">Detalii</button>
             </Link>
         </div>

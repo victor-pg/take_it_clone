@@ -21,4 +21,18 @@ pool.query(createNewsTable, (err, res) => {
     if (res) console.log("Table news created successfully " + res);
 })
 
+const createProductsTable = `CREATE TABLE IF NOT EXISTS products (
+    id SERIAL PRIMARY KEY NOT NULL ,
+    name varchar(450) NOT NULL,
+    description text NOT NULL,
+    imgUrl varchar(450) NOT NULL ,
+    type varchar(450) NOT NULL,
+    short_desc varchar(250)
+    )`;
+
+pool.query(createProductsTable, (err, res) => {
+    if (err) console.log("Cannot create products table " + err);
+    if (res) console.log("Table products created successfully " + res);
+})
+
 module.exports = pool;

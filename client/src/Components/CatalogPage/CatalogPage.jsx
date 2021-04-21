@@ -28,6 +28,14 @@ const CatalogPage = () => {
     let positionInherit = showNav ? 'p-inherit' : '';
     let m0Auto = showNav ? 'm0Auto' : '';
 
+    const ccl = data.filter(item => item.type === "ccl");
+    const aures = data.filter(item => item.type === "aures");
+    const datalogic = data.filter(item => item.type === "datalogic");
+    const shopguard = data.filter(item => item.type === "shopguard");
+    const zebra = data.filter(item => item.type === "zebra");
+    const bizebra = data.filter(item => item.type === "bizebra");
+    const tsc = data.filter(item => item.type === "tsc");
+
     return (
         <div className="catalog-page">
             <div className="container">
@@ -48,12 +56,12 @@ const CatalogPage = () => {
                         <div className="catalog-menu">
                             <hr className="catalog-delimitator" />
                             <ul>
-                                <li><ScrollLink>Aures</ScrollLink></li>
-                                <li><ScrollLink>Datalogic</ScrollLink></li>
-                                <li><ScrollLink>Shopguard</ScrollLink></li>
-                                <li><ScrollLink>Zebra</ScrollLink></li>
-                                <li><ScrollLink>Bizerda</ScrollLink></li>
-                                <li><ScrollLink>TSC</ScrollLink></li>
+                                <li><ScrollLink to="aures" spy={true} smooth={true}>Aures</ScrollLink></li>
+                                <li><ScrollLink to="datalogic" spy={true} smooth={true}>Datalogic</ScrollLink></li>
+                                <li><ScrollLink to="shopguard" spy={true} smooth={true}>Shopguard</ScrollLink></li>
+                                <li><ScrollLink to="zebra" spy={true} smooth={true}>Zebra</ScrollLink></li>
+                                <li><ScrollLink to="bizebra" spy={true} smooth={true}>Bizebra</ScrollLink></li>
+                                <li><ScrollLink to="tsc" spy={true} smooth={true}>TSC</ScrollLink></li>
                             </ul>
                             <hr className="catalog-delimitator" />
                         </div>
@@ -63,19 +71,70 @@ const CatalogPage = () => {
                 <p className={`catalog-page-title ${m0Auto}`}>Partenerii noștri sunt branduri cu renume internațional, care combină funcționalitatea și designul elegant pentru afacerea dvs. Suntem foarte mândri de cooperarea noastră!</p>
                 <p className="catalog-page-contacts">Contactați-ne: sales@takeit.md</p>
                 <div className="catalog-page-content">
+
                     <p className="section-title">CCL</p>
-                    <div className="section">
-                    {
-                            data.map((item) => {
-                                return <CatalogItem item={item} key={item._id} className="catalog-item" />
-                            })
-                        }
+                    <div className="section" id="ccl">
                         {
-                            data.map((item) => {
-                                return <CatalogItem item={item} key={item._id} />
+                            ccl.reverse().map((item) => {
+                                return <CatalogItem item={item} key={item.id} className="catalog-item" />
                             })
                         }
                     </div>
+
+                    <p className="section-title">AURES</p>
+                    <div className="section" id="aures">
+                        {
+                            aures.map((item) => {
+                                return <CatalogItem item={item} key={item.id} className="catalog-item" />
+                            })
+                        }
+                    </div>
+
+                    <p className="section-title">DATALOGIC</p>
+                    <div className="section" id="datalogic">
+                        {
+                            datalogic.map((item) => {
+                                return <CatalogItem item={item} key={item.id} className="catalog-item" />
+                            })
+                        }
+                    </div>
+
+                    <p className="section-title">Shopguard</p>
+                    <div className="section" id="shopguard">
+                        {
+                            shopguard.map((item) => {
+                                return <CatalogItem item={item} key={item.id} className="catalog-item" />
+                            })
+                        }
+                    </div>
+
+                    <p className="section-title">Zebra Technologies</p>
+                    <div className="section" id="zebra">
+                        {
+                            zebra.map((item) => {
+                                return <CatalogItem item={item} key={item.id} className="catalog-item" />
+                            })
+                        }
+                    </div>
+
+                    <p className="section-title">Bizebra</p>
+                    <div className="section" id="bizebra">
+                    {
+                            bizebra.map((item) => {
+                                return <CatalogItem item={item} key={item.id} className="catalog-item" />
+                            })
+                        }
+                    </div>
+
+                    <p className="section-title">Imprimante TSC</p>
+                    <div className="section" id="tsc">
+                    {
+                            tsc.map((item) => {
+                                return <CatalogItem item={item} key={item.id} className="catalog-item" />
+                            })
+                        }
+                    </div>
+
                 </div>
             </div>
             <div className="catalog-footer">

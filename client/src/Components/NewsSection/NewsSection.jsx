@@ -27,8 +27,8 @@ const NewsSection = () => {
                         })
                     }
                 </div>
-                <a href="#" className="news-section-view-more">
-                    <button>Citeste toate articolele</button>
+                <a href="#news" className="news-section-view-more">
+                    <button>Citește toate articolele</button>
                 </a>
             </div>
         </div>

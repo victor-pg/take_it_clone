@@ -4,11 +4,10 @@ const pool = require('../db');
 
 router.get("/news", async (req, res) => {
     const getAllNews = `SELECT * FROM news`;
-    pool.query(getAllNews,(error,result)=>{
-        if(error){
+    pool.query(getAllNews, (error, result) => {
+        if (error) {
             res.status(500).send('Database error ' + error);
-            
-        }else{
+        } else {
             res.status(200).json(result.rows);
         }
     })
@@ -16,11 +15,11 @@ router.get("/news", async (req, res) => {
 
 router.get("/newest", async (req, res) => {
     const getAllNewest = `SELECT * FROM news ORDER BY timestamp DESC LIMIT 3`;
-    pool.query(getAllNewest,(error,result)=>{
-        if(error){
+    pool.query(getAllNewest, (error, result) => {
+        if (error) {
             res.status(500).send('Database error ' + error);
-            
-        }else{
+
+        } else {
             res.status(200).json(result.rows);
         }
     })
