@@ -9,7 +9,8 @@
     "server": "node index.js",
     "dev-server": "nodemon index.js",
     "client": "yarn --cwd client/ start",
-    "start": "concurrently  \"yarn server\" \"yarn client\" "
+    "start": "concurrently  \"yarn server\" \"yarn client\" ",
+    "dev-client-server": " concurrently  \"yarn dev-server\" \"yarn client\" "
   },
   "dependencies": {
     "express": "^4.17.1",

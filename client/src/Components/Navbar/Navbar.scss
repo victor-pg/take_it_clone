@@ -97,3 +97,20 @@ nav {
         }
     }
 }
+@media screen and (max-width: 980px){
+    .modal{
+        width:100% !important;
+        height: 50vh;
+    }
+    .modal-html-content{
+        width:100% !important;
+        flex-direction: column;
+
+        .form-group{
+            width:50%;
+        }
+        .submit-button{
+            width:50%;
+        }
+    }
+}

@@ -268,4 +268,22 @@ ul {
             font-size: 28px !important;
         }
     }
+    // news section
+
+    .news-section {
+        height: auto;
+        .container {
+            .news-section-content {
+                flex-direction: column;
+
+                .news-item{
+                    width:100%;
+                    padding-top: 40px;
+                }
+            }
+            .news-section-view-more{
+                margin-top: 30px;
+            }
+        }
+    }
 }
