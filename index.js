@@ -1,10 +1,13 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const config = require('./config');;
 const pool = require('./db');
 
 const app = express();
+app.use(bodyParser.json());
 app.use("/api/", require('./routes/products.routes'));
 app.use("/api/", require('./routes/news.routes'));
+app.use("/api/auth",require('./routes/auth.routes'));
 
 const PORT = config.PORT || 5000;
 

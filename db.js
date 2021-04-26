@@ -35,4 +35,16 @@ pool.query(createProductsTable, (err, res) => {
     if (res) console.log("Table products created successfully " + res);
 })
 
+const createUsersTable=` CREATE TABLE IF NOT EXISTS users(
+    id SERIAL PRIMARY KEY NOT NULL,
+    username varchar(100) NOT NULL,
+    password varchar(450) NOT NULL
+)`;
+
+pool.query(createUsersTable, (err, res) => {
+    if (err) console.log("Cannot create users table " + err);
+    if (res) console.log("Table users created successfully " + res);
+})
+
+
 module.exports = pool;
