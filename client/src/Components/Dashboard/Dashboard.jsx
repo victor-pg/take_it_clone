@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import DashboardNav from './DashboardNav/DashboardNav';
+import DashboardNewsList from './DashboardNewsList/DashboardNewsList';
+import DashboardList from './DashboardList/DashboardList';
 
 import './Dashboard.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Dashboard = () => {
     const [username, setUsername] = useState('');
@@ -37,24 +41,26 @@ const Dashboard = () => {
 
     if (isLoggedIn==="false") {
         return (
-            <div className="dashboard">
+            <div id="dashboard">
                 <div className="form">
                     <div className="form-group">
-                        <label htmlFor="username">Username</label>
+                        <label htmlFor="username">Nume de utilizator</label>
                         <input type="text" name="username" onChange={handleUsername} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="password">Parolă</label>
                         <input type="password" name="password" onChange={handlePassword} />
                     </div>
-                    <button className="submit-button" onClick={handleSubmit}>Submit</button>
+                    <button className="submit-button" onClick={handleSubmit}>Login</button>
                 </div>
             </div>
         );
     } else {
         return (
-            <div className="dashboard">
-                <button onClick={handleLogout}>Logout</button>
+            <div id="dashboard">
+                <DashboardNav handleLogout={handleLogout} />
+                <DashboardNewsList/>
+                <DashboardList/>
             </div>
         );
     }
