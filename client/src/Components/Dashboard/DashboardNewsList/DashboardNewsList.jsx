@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DashboardNewsItem from '../DashboardNewsItem/DashboardNewsItem';
-import { Row, Container, Button } from 'react-bootstrap';
+import { Row, Container } from 'react-bootstrap';
 
 import './DashboardNewsList.scss';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const DashboardNewsList = () => {
     const [news, setNews] = useState([]);
@@ -18,9 +19,6 @@ const DashboardNewsList = () => {
     return (
         <div id="dashboard-news">
             <h1 className="m-4 text-center">Noutăți</h1>
-            <Container>
-                <Button variant="success" className="m-3">Adaugă un articol nou</Button>
-            </Container>
             <Container>
                 <Row md={2} lg={3} sm={2} xs={1}>
                     {

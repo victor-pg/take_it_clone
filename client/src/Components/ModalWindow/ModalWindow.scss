@@ -4,7 +4,7 @@
 .modal-main {
     z-index: 9999 !important;
 }
-.modal {
+.modal-window {
     position: absolute;
     z-index: 999 !important;
     top: 50%;
@@ -37,5 +37,4 @@
     margin: 0 auto;
     display: block;
     z-index: 9999 !important;
-
 }

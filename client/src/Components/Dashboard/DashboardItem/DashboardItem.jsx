@@ -1,6 +1,8 @@
 import React from 'react';
 import { Col, Button, Card } from 'react-bootstrap';
+
 import './DashboardItem.scss';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const DashboardItem = ({ item }) => {
     return (

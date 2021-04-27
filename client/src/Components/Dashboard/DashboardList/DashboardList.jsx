@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DashboardItem from '../DashboardItem/DashboardItem';
-import { Row, Container, Button } from 'react-bootstrap';
+import { Row, Container } from 'react-bootstrap';
 
 import './DashboardList.scss';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const DashboardList = () => {
     const [data, setData] = useState([]);
@@ -13,7 +14,6 @@ const DashboardList = () => {
             .then(res => setData(res.data))
             .catch(error => console.log(error.message));
     }, [])
-    console.log(data);
 
     const ccl = data.filter(item => item.type === "ccl");
     const aures = data.filter(item => item.type === "aures");
@@ -26,9 +26,6 @@ const DashboardList = () => {
     return (
         <div id="dashboard-catalog">
             <h1 className="m-4 text-center">Catalog</h1>
-            <Container>
-                <Button variant="success" className="m-3">Adaugă produs nou in catalog</Button>
-            </Container>
 
             <h1 id="dashboard-ccl" className="m-4 text-center">CCL</h1>
             <Container>

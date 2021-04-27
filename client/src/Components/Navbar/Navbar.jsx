@@ -38,7 +38,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className={`navbar ${positionInherit}`}>
+        <div className={`navbar2 ${positionInherit} `}>
             <nav className={navContentClass}>
                 <div className={`nav-mobile-head ${navHeaderClass}`}>
                     <div className="burger" onClick={changeNavState}>
@@ -58,7 +58,7 @@ const Navbar = () => {
                         <li><ScrollLink to="about" spy={true} smooth={true}>Despre</ScrollLink></li>
                         <li><ScrollLink to="partners" spy={true} smooth={true}>Parteneri</ScrollLink></li>
                         <li><ScrollLink to="footer" spy={true} smooth={true}>Contacte</ScrollLink></li>
-                        <li><Link to="/catalog">Catalog</Link></li>
+                        <li><Link to="/catalog" className="catalog-link">Catalog</Link></li>
                         {/* <li><FaFacebook className="icon-size" /></li> */}
                         {/* <li><FaInstagram className="icon-size" /></li> */}
                         <li>

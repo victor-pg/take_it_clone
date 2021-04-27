@@ -1,3 +1,6 @@
+const upload = require('express-fileupload');
+const multer  = require('multer')
+const upload2= multer({ dest: 'uploads/' });
 const { Router } = require('express');
 const router = Router();
 const pool = require('../db');
@@ -36,5 +39,15 @@ router.get("/news/:id", async (req, res) => {
         }
     })
 })
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+    cb(null, 'public')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' +file.originalname )
+  }
+})
+
 
 module.exports = router;

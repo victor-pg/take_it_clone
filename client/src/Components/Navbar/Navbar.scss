@@ -1,14 +1,15 @@
+
 nav {
-    display: flex;
-    justify-content: space-around;
+    display: flex !important;
+    justify-content: space-around ;
     align-items: center;
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    width: 100%;
-    height: 15vh;
-    background-color: rgba(64, 62, 61, .8);
+    font-family: "Roboto", sans-serif ;
+    font-weight: 500 ;
+    width: 100% ;
+    height: 15vh ;
+    background-color: rgba(64, 62, 61, 1) ;
     // position: absolute;
-    z-index: 999;
+    z-index: 999 ;
     // display:none;
 
     .logo {
@@ -22,10 +23,13 @@ nav {
         align-items: center;
         justify-content: space-evenly;
         li {
-            margin: 0 10px 0 10px;
+            margin: 0 10px 0 10px ;
             a {
-                color: white;
-                cursor: pointer;
+                color: white !important;
+                cursor: pointer ;
+            }
+            .catalog-link:hover{
+                text-decoration: none;
             }
             button{
                 background-color: #2CC72C;
@@ -43,6 +47,7 @@ nav {
                 }
             }
         }
+
     }
     svg{
         cursor: pointer;
@@ -114,3 +119,4 @@ nav {
         }
     }
 }
+
