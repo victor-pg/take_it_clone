@@ -13,49 +13,92 @@ const DashboardNav = ({ handleLogout }) => {
     const [subtitle, setSubtitle] = useState('');
     const [content, setContent] = useState('');
     const [file, setFile] = useState('');
-    const [filename, setFilename] = useState('Choose File');
-    const [uploadedFile, setUploadedFile] = useState({});
+
+    const [showProductsModal, setShowProductsModal] = useState(false);
+    const [name, setName] = useState('');
+    const [shortDescription, setShortDescription] = useState('');
+    const [description, setDescription] = useState('');
+    const [type, setType] = useState('ccl');
+    const [fileProducts, setFileProducts] = useState('');
 
     const changeNewsModalState = () => {
         setShowNewsModal(!showNewsModal);
     }
 
-    const getImage = (e) => {
-        setFile(e.target.files[0]);
-        setFilename(e.target.files[0].name);
+    const changeProductsModalState = () => {
+        setShowProductsModal(!showProductsModal);
     }
 
-    const customStyles = {
+    const getImage = (e) => {
+        setFile(e.target.files[0]);
+    }
+    const getProductsImage = (e) => {
+        setFileProducts(e.target.files[0]);
+    }
+
+    const customNewsStyles = {
         content: {
             height: '500px'
         }
     };
 
-    const saveArticle =async e => {
+    const customProductsStyles = {
+        content: {
+            height: '550px',
+            padding: '20px 0 0 0'
+        }
+    };
+
+    const saveArticle = async e => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('file', file);
 
         // my 
 
-        formData.append('title',title);
-        formData.append('subtitle',subtitle);
-        formData.append('content',content);
+        formData.append('title', title);
+        formData.append('subtitle', subtitle);
+        formData.append('content', content);
 
         // end my
-    
+
         try {
-          const res = await axios.post('/api/news/save', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            },
-          })
-          .then(res=>alert('Succes'));    
+            await axios.post('/api/news/save', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                },
+            }).then((result) => alert(result.data.message));
         } catch (err) {
-          alert('A aparut o problemă');
-          console.log(err);
+            alert('A aparut o problemă');
+            console.log(err);
         }
-      };
+    };
+
+    const saveProduct = async e => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('fileProducts', fileProducts);
+
+        // my 
+
+        formData.append('name', name);
+        formData.append('shortDescription', shortDescription);
+        formData.append('description', description);
+        formData.append('type', type);
+
+        // end my
+
+        try {
+            await axios.post('/api/products/save', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                },
+            }).then((result) => alert(result.data.message));
+        } catch (err) {
+            alert('A aparut o problemă');
+            console.log(err);
+        }
+    };
 
     const newsModalHtmlContent = () => {
         return (
@@ -66,7 +109,7 @@ const DashboardNav = ({ handleLogout }) => {
                 </div>
                 <div className="modal-input-group">
                     <label htmlFor="subtitle">Subtitlu</label>
-                    <input type="text" name="subtitle" required onChange={(e) => setSubtitle(e.target.value)} />
+                    <input type="text"  name="subtitle" onChange={(e) => setSubtitle(e.target.value)} />
                 </div>
                 <div className="modal-input-group">
                     <label htmlFor="content">Conținut</label>
@@ -75,6 +118,41 @@ const DashboardNav = ({ handleLogout }) => {
                 <div className="modal-input-group">
                     <label htmlFor="file">Imaginea</label>
                     <input type="file" name="file" onChange={getImage} required />
+                </div>
+                <input type="submit" value="Adaugă" className="btn btn-primary d-block m-auto" />
+            </form>
+        );
+    }
+    const productsModalHtmlContent = () => {
+        return (
+            <form className="news-modal-html-content" onSubmit={saveProduct}>
+                <div className="modal-input-group">
+                    <label htmlFor="name">Nume</label>
+                    <input type="text" name="name" required onChange={(e) => setName(e.target.value)} />
+                </div>
+                <div className="modal-input-group">
+                    <label htmlFor="shortDescription">Scurtă descriere</label>
+                    <input type="text" placeholder="Opțional" name="shortDescription" onChange={(e) => setShortDescription(e.target.value)} />
+                </div>
+                <div className="modal-input-group">
+                    <label htmlFor="description">Descriere</label>
+                    <textarea name="description" cols="30" rows="10" required onChange={(e) => setDescription(e.target.value)} ></textarea>
+                </div>
+                <div className="modal-input-group">
+                    <label htmlFor="type">Tip produs</label>
+                    <select name="type" value={type} required onChange={(e) => setType(e.target.value)}>
+                        <option value="ccl">CCL</option>
+                        <option value="aures">Aures</option>
+                        <option value="datalogic">Datalogic</option>
+                        <option value="shopguard">Shopguard</option>
+                        <option value="zebra">Zebra</option>
+                        <option value="bizebra">Bizebra</option>
+                        <option value="tsc">TSC</option>
+                    </select>
+                </div>
+                <div className="modal-input-group">
+                    <label htmlFor="fileProducts">Imaginea</label>
+                    <input type="file" name="fileProducts" onChange={getProductsImage} required />
                 </div>
                 <input type="submit" value="Adaugă" className="btn btn-primary d-block m-auto" />
             </form>
@@ -113,10 +191,10 @@ const DashboardNav = ({ handleLogout }) => {
                         <ScrollLink className="text-muted" to="dashboard-tsc" spy={true} smooth={true}>TSC</ScrollLink>
                     </Nav.Link>
                     <Nav className="m-1">
-                        <Button variant={"warning"} onClick={changeNewsModalState}>Adaugă articol nou</Button>
+                        <Button variant={"warning"} onClick={changeNewsModalState} className="text-white" >Adaugă articol nou</Button>
                     </Nav>
                     <Nav className="m-1">
-                        <Button variant={"success"}>Adaugă produs nou</Button>
+                        <Button variant={"success"} onClick={changeProductsModalState}>Adaugă produs nou</Button>
                     </Nav>
                     <Nav className="m-1">
                         <Button onClick={handleLogout} variant={"danger"}>Logout</Button>
@@ -125,8 +203,15 @@ const DashboardNav = ({ handleLogout }) => {
                 {showNewsModal ?
                     <ModalWindow
                         message="Adaugă un articol nou"
-                        customStyles={customStyles}
+                        customStyles={customNewsStyles}
                         htmlContent={newsModalHtmlContent}
+                    />
+                    : null}
+                {showProductsModal ?
+                    <ModalWindow
+                        message="Adaugă un produs nou"
+                        customStyles={customProductsStyles}
+                        htmlContent={productsModalHtmlContent}
                     />
                     : null}
             </Navbar>
