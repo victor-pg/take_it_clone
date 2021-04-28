@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const appDir = path.dirname(require.main.filename);
 const { Router } = require('express');
 const router = Router();
 const pool = require('../db');
@@ -51,11 +50,14 @@ router.delete('/news/delete/:id',async(req,res)=>{
         else fileName=result.rows[0].imgurl;
     })
 
+
+    let fileDir = path.join(__dirname, '../client/public/img/news/');
+
     await pool.query(deleteArticle,(error,result)=>{
         if(error) res.json({message:'Nu s-a putut șterge articolul'})
         else {
             try {
-                fs.unlinkSync(appDir + `/client/public/img/news/${fileName}`);
+                fs.unlinkSync(fileDir + fileName);
             } catch (error) {
                 console.log('Imaginea articolului nu s-a putut șterge : '+error)
             }
