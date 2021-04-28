@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+const appDir = path.dirname(require.main.filename);
 const { Router } = require('express');
 const router = Router();
 const pool = require('../db');
@@ -22,6 +25,31 @@ router.get("/details/:id", async (req, res) => {
             res.status(200).send(result.rows);
         }
     })
+})
+
+router.delete('/products/delete/:id',async(req,res)=>{
+    const {id} = req.params;
+    const candidate = `SELECT * FROM products WHERE id=${id}`;
+    const deleteProduct = `DELETE FROM products WHERE id=${id}`;
+    let fileName;
+
+    await pool.query(candidate,(error,result)=>{
+        if(error) res.json({message:`Produsul cu id=${id} nu a fost găsit`})
+        else fileName=result.rows[0].imgurl;
+    })
+
+    await pool.query(deleteProduct,(error,result)=>{
+        if(error) res.json({message:'Nu s-a putut șterge produsul'})
+        else {
+            try {
+                fs.unlinkSync(appDir + `/client/public/img/products/${fileName}`);
+            } catch (error) {
+                console.log('Imaginea articolului nu s-a putut șterge : ' + error)
+            }
+            res.json({message:'Produsul a fost șters cu succes'})
+        }
+    })
+
 })
 
 module.exports = router;

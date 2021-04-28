@@ -4,7 +4,7 @@ import { Col, Button, Card } from 'react-bootstrap';
 import './DashboardNewsItem.scss';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
-const DashboardNewsItem = ({ item }) => {
+const DashboardNewsItem = ({ item,deleteArticle }) => {
     return (
         <Col>
             <Card style={{ width: '18rem' }}>
@@ -15,7 +15,7 @@ const DashboardNewsItem = ({ item }) => {
                 </Card.Body>
                 <Card.Body>
                     <Button variant="primary">Modifică</Button>{' '}
-                    <Button variant="danger">Șterge</Button>{' '}
+                    <Button variant="danger" onClick={deleteArticle}>Șterge</Button>{' '}
                 </Card.Body>
             </Card>
         </Col>

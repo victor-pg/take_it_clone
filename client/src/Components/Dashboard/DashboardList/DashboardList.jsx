@@ -15,6 +15,15 @@ const DashboardList = () => {
             .catch(error => console.log(error.message));
     }, [])
 
+    const deleteProduct = async (id) => {
+        await axios.delete(`/api/products/delete/${id}`)
+            .then(res => {
+                alert(res.data.message);
+                setData(data => data.filter(product => product.id !== id))
+            })
+            .catch(err => alert(err.data.message))
+    }
+
     const ccl = data.filter(item => item.type === "ccl");
     const aures = data.filter(item => item.type === "aures");
     const datalogic = data.filter(item => item.type === "datalogic");
@@ -31,7 +40,7 @@ const DashboardList = () => {
             <Container>
                 <Row md={2} lg={3} sm={2} xs={1}>
                     {
-                        ccl.map(item => <DashboardItem item={item} key={item.id} />)
+                        ccl.map(item => <DashboardItem item={item} key={item.id} deleteProduct={() => deleteProduct(item.id)} />)
                     }
                 </Row>
             </Container>
@@ -40,7 +49,7 @@ const DashboardList = () => {
             <Container>
                 <Row md={2} lg={3} sm={2} xs={1}>
                     {
-                        aures.map(item => <DashboardItem item={item} key={item.id} />)
+                        aures.map(item => <DashboardItem item={item} key={item.id} deleteProduct={() => deleteProduct(item.id)} />)
                     }
                 </Row>
             </Container>
@@ -49,7 +58,7 @@ const DashboardList = () => {
             <Container>
                 <Row md={2} lg={3} sm={2} xs={1}>
                     {
-                        datalogic.map(item => <DashboardItem item={item} key={item.id} />)
+                        datalogic.map(item => <DashboardItem item={item} key={item.id} deleteProduct={() => deleteProduct(item.id)} />)
                     }
                 </Row>
             </Container>
@@ -58,7 +67,7 @@ const DashboardList = () => {
             <Container>
                 <Row md={2} lg={3} sm={2} xs={1}>
                     {
-                        shopguard.map(item => <DashboardItem item={item} key={item.id} />)
+                        shopguard.map(item => <DashboardItem item={item} key={item.id} deleteProduct={() => deleteProduct(item.id)} />)
                     }
                 </Row>
             </Container>
@@ -67,7 +76,7 @@ const DashboardList = () => {
             <Container>
                 <Row md={2} lg={3} sm={2} xs={1}>
                     {
-                        zebra.map(item => <DashboardItem item={item} key={item.id} />)
+                        zebra.map(item => <DashboardItem item={item} key={item.id} deleteProduct={() => deleteProduct(item.id)} />)
                     }
                 </Row>
             </Container>
@@ -76,7 +85,7 @@ const DashboardList = () => {
             <Container>
                 <Row md={2} lg={3} sm={2} xs={1}>
                     {
-                        bizebra.map(item => <DashboardItem item={item} key={item.id} />)
+                        bizebra.map(item => <DashboardItem item={item} key={item.id} deleteProduct={() => deleteProduct(item.id)} />)
                     }
                 </Row>
             </Container>
@@ -85,7 +94,7 @@ const DashboardList = () => {
             <Container>
                 <Row md={2} lg={3} sm={2} xs={1}>
                     {
-                        tsc.map(item => <DashboardItem item={item} key={item.id} />)
+                        tsc.map(item => <DashboardItem item={item} key={item.id} deleteProduct={() => deleteProduct(item.id)} />)
                     }
                 </Row>
             </Container>

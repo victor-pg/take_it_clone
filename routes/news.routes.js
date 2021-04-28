@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+const appDir = path.dirname(require.main.filename);
 const { Router } = require('express');
 const router = Router();
 const pool = require('../db');
@@ -35,6 +38,31 @@ router.get("/news/:id", async (req, res) => {
             res.status(200).json(result.rows);
         }
     })
+})
+
+router.delete('/news/delete/:id',async(req,res)=>{
+    const {id} = req.params;
+    const candidate = `SELECT * FROM news WHERE id=${id}`;
+    const deleteArticle = `DELETE FROM news WHERE id=${id}`;
+    let fileName;
+
+    await pool.query(candidate,(error,result)=>{
+        if(error) res.json({message:`Articol cu id=${id} nu a fost găsit`})
+        else fileName=result.rows[0].imgurl;
+    })
+
+    await pool.query(deleteArticle,(error,result)=>{
+        if(error) res.json({message:'Nu s-a putut șterge articolul'})
+        else {
+            try {
+                fs.unlinkSync(appDir + `/client/public/img/news/${fileName}`);
+            } catch (error) {
+                console.log('Imaginea articolului nu s-a putut șterge : '+error)
+            }
+            res.json({message:'Articolul a fost șters cu succes'})
+        }
+    })
+
 })
 
 module.exports = router;
