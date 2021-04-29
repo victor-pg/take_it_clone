@@ -32,7 +32,7 @@ router.get("/news/:id", async (req, res) => {
     const getOneItem = `SELECT * FROM news WHERE id=${id}`;
     await pool.query(getOneItem, (err, result) => {
         if (err) {
-            res.status(500).send('Database error ' + error)
+            res.status(500).send('Database error ' + err)
         } else {
             res.status(200).json(result.rows);
         }

@@ -4,7 +4,7 @@ import { Col, Button, Card } from 'react-bootstrap';
 import './DashboardItem.scss';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
-const DashboardItem = ({ item , deleteProduct}) => {
+const DashboardItem = ({ item, deleteProduct, updateProduct }) => {
     return (
         <Col>
             <Card style={{ width: '18rem' }}>
@@ -14,7 +14,7 @@ const DashboardItem = ({ item , deleteProduct}) => {
                     <Card.Text className="dashboard-item-subtitle">{item.short_desc}</Card.Text>
                 </Card.Body>
                 <Card.Body>
-                    <Button variant="primary">Modifică</Button>{' '}
+                    <Button variant="primary" onClick={updateProduct}>Modifică</Button>{' '}
                     <Button variant="danger" onClick={deleteProduct}>Șterge</Button>{' '}
                 </Card.Body>
             </Card>
