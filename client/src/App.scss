@@ -13,8 +13,8 @@ ul {
     height: 30px;
 }
 .container {
-    width: 80%;
-    margin: 0 auto;
+    width: 80% !important;
+    margin: 0 auto !important;
 }
 
 @media screen and (max-width: 980px) {
