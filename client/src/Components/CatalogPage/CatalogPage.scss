@@ -60,7 +60,7 @@
     .catalog-footer {
         background-color: #efefef;
         width: 100%;
-        height: 200px;
+        height: auto;
         text-align: center;
         .container {
             .catalog-footer-title {
@@ -96,6 +96,13 @@
     }
     .catalog-item {
         margin: 20px 0;
+        
+        .catalog-item-name{
+            height: 80px;
+        }
+        .catalog-item-short-desc{
+            height: 50px;
+        }
     }
 }
 

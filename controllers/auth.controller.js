@@ -32,7 +32,7 @@ class AuthController {
             const { username, password } = req.body;
             pool.query(`SELECT * FROM users WHERE username='${username}'`)
             .then(result => {
-                if(result.rowCount!=1) { return res.status(404).json({'message':`Utilizatorul ${username} nu a fost gasit`}) }
+                if(result.rowCount!=1) { return res.status(404).json({message:`Utilizatorul ${username} nu a fost gasit`}) }
                 else{
                     const validPassword = bcrypt.compareSync(password,result.rows[0].password);
                     if(validPassword){
@@ -42,7 +42,7 @@ class AuthController {
                     }                
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err => res.status(500).json({message:'Eroare din partea serverului'}));
 
         } catch (e) {
             console.log(e);

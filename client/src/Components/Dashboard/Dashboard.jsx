@@ -25,16 +25,14 @@ const Dashboard = () => {
             .then(res => {
                 localStorage.setItem('isLoggedIn', true);
                 setIsLoggedIn('true');
-                console.log('on login : ' + isLoggedIn);
             })
-            .catch(err => console.log(err))
+            .catch(err => alert('Date gresite'))
     }
     const handleLogout = () => {
         axios.post('/api/auth/logout', { username })
             .then(res => {
-                localStorage.setItem('isLoggedIn', false);
+                localStorage.removeItem('isLoggedIn');
                 setIsLoggedIn('false');
-                console.log('on logout : ' + isLoggedIn);
             })
             .catch(err => console.log(err));
     }

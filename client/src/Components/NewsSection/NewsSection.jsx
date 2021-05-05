@@ -14,7 +14,6 @@ const NewsSection = () => {
                 setNews(res.data);
             })
             .catch(err => { console.log('Cannot get news ' + err); })
-        console.log('render');
     }, [])
 
     return (

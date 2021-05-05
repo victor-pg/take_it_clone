@@ -46,7 +46,7 @@ const DashboardList = () => {
                 setName(name); setShortDesc(short_desc); setDescription(description);
                 setType(type);
             })
-            .catch(err => console.log('Update error ' + err))
+            .catch(err => console.log(''));
     }
 
     const updateProductContent = () => {
