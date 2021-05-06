@@ -102,6 +102,23 @@ nav {
         }
     }
 }
+.submit-button{
+    width:100% !important;
+    border:none;
+    background-color: #2cc72c;
+    padding:15px 30px;
+    color:white;
+    cursor:pointer;
+    display: block;
+    width:25%;
+    text-align: center;
+
+    &:hover{
+        // background-color: white;
+        // color:#ff8562;
+        text-decoration: none;
+    }
+}
 @media screen and (max-width: 980px){
     .modal{
         width:100% !important;

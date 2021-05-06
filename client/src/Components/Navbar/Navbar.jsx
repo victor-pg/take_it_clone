@@ -32,7 +32,8 @@ const Navbar = () => {
                     <label htmlFor="phone">Telefonul</label>
                     <input type="tel" id="phone" required name="phone" placeholder="+373" pattern="/^\+373\[0-9]\{2\}-\[0-9]\{2\}-\[0-9]\{2\}-\[0-9]\{2\}$/i" />
                 </div>
-                <input type="submit" value="Primeste oferta" className="submit-button" />
+                {/* <input type="submit" value="Primeste oferta" className="submit-button" /> */}
+                <a href="tel:1111111111" className="submit-button">Sunați-ne</a>
             </form>
         );
     };
@@ -62,11 +63,12 @@ const Navbar = () => {
                         {/* <li><FaFacebook className="icon-size" /></li> */}
                         {/* <li><FaInstagram className="icon-size" /></li> */}
                         <li>
-                            <button
+                            {/* <button
                                 onClick={changeModalState}
                             >
-                                Primiti oferta dvs.
-                            </button>
+                                Sunați-ne
+                            </button> */}
+                            <a href="tel:1111111111" className="submit-button">Sunați-ne</a>
                             {
                                 showModal ? <ModalWindow htmlContent={modalHtmlContent} showCloseButton={false} />
                                     : null
