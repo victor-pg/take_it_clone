@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
+const path = require('path');
 var cors = require('cors');
 const config = require('./config');;
 const pool = require('./db');
@@ -133,7 +134,15 @@ app.put('/api/products/update/:id', (req, res) => {
 
 });
 
-const PORT = config.PORT || 5000;
+
+
+const PORT = process.env.PORT || 5000;
+
+app.use('/',express.static(path.join(__dirname,'client','build')));
+
+app.get('/',(req,res)=>{
+  res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+})
 
 const start = async () => {
   try {

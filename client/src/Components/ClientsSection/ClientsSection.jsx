@@ -6,7 +6,7 @@ const ClientsSection=()=>{
     return(
         <div className="clients-section container" id="clients">
             {
-                clients.map(client=> <img key={client} src={process.env.PUBLIC_URL + `${client}`} className="clients-image-size" alt={client} /> )
+                clients.map(client=> <img key={client} src={process.env.PUBLIC_URL + `/${client}`} className="clients-image-size" alt={client} /> )
             }
         </div>
     );
