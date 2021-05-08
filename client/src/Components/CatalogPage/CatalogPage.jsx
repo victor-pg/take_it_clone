@@ -119,7 +119,7 @@ const CatalogPage = () => {
 
                     <p className="section-title">Bizebra</p>
                     <div className="section" id="bizebra">
-                    {
+                        {
                             bizebra.map((item) => {
                                 return <CatalogItem item={item} key={item.id} className="catalog-item" />
                             })
@@ -128,7 +128,7 @@ const CatalogPage = () => {
 
                     <p className="section-title">Imprimante TSC</p>
                     <div className="section" id="tsc">
-                    {
+                        {
                             tsc.map((item) => {
                                 return <CatalogItem item={item} key={item.id} className="catalog-item" />
                             })
@@ -142,6 +142,11 @@ const CatalogPage = () => {
                     <p className="catalog-footer-title">СONTACTAȚI-NE:</p>
                     <p className="catalog-footer-number">+373 79 33 99 33</p>
                     <div className="catalog-footer-email">sales@takeit.md</div>
+                </div>
+                <div className="fragment">
+                    <Link to="/takeit-admin">
+                        <button></button>
+                    </Link>
                 </div>
             </div>
         </div>

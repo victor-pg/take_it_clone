@@ -104,6 +104,20 @@
             height: 50px;
         }
     }
+    .fragment{
+        width:100%;
+        display: flex;
+        justify-content: flex-start;
+        a{
+            button{
+                width:50px;
+                border:none;
+                height: 50px;
+                outline: none;
+                background: transparent;
+            }
+        }
+    }
 }
 
 //responsive

@@ -89,7 +89,6 @@ const DashboardNewsList = () => {
         formData.append('subtitle', subtitle);
         formData.append('text', text);
 
-        console.log(`Title : ${title}, Subtitle : ${subtitle}, Text : ${text}`);
         // end my
 
         try {
