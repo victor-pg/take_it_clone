@@ -46,7 +46,7 @@ router.delete('/products/delete/:id',async(req,res)=>{
             try {
                 fs.unlinkSync(fileDir + fileName);
             } catch (error) {
-                console.log('Imaginea articolului nu s-a putut șterge : ' + error)
+                console.log('Imaginea produsului nu s-a putut șterge : ' + error)
             }
             res.json({message:'Produsul a fost șters cu succes'})
         }

@@ -67,7 +67,10 @@ const DashboardNav = ({ handleLogout }) => {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },
-            }).then((result) => alert(result.data.message));
+            }).then((result) => {
+                alert(result.data.message)
+                setShowNewsModal(false)
+            });
         } catch (err) {
             alert('A aparut o problemă');
             console.log(err);
@@ -93,7 +96,10 @@ const DashboardNav = ({ handleLogout }) => {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },
-            }).then((result) => alert(result.data.message));
+            }).then((result) => {
+                alert(result.data.message)
+                setShowProductsModal(false)
+            });
         } catch (err) {
             alert('A aparut o problemă');
             console.log(err);
@@ -189,6 +195,9 @@ const DashboardNav = ({ handleLogout }) => {
                     </Nav.Link>
                     <Nav.Link>
                         <ScrollLink className="text-muted" to="dashboard-tsc" spy={true} smooth={true}>TSC</ScrollLink>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <ScrollLink className="text-muted" to="dashboard-tsc" spy={true} smooth={true}>Produs nou</ScrollLink>
                     </Nav.Link>
                     <Nav className="m-1">
                         <Button variant={"warning"} onClick={changeNewsModalState} className="text-white" >Adaugă articol nou</Button>

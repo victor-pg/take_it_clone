@@ -105,7 +105,10 @@ const DashboardList = () => {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },
-            }).then((result) => alert(result.data.message));
+            }).then((result) => {
+                alert(result.data.message)
+                setShowUpdateModal(false);
+            });
         } catch (err) {
             alert('A aparut o problemă');
         }

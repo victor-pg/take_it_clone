@@ -24,7 +24,7 @@ app.post('/api/news/save', (req, res) => {
 
   const file = req.files.file;
 
-  file.mv(`${__dirname}/client/build/img/news/${file.name}`, err => {
+  file.mv(`${__dirname}/client/public/img/news/${file.name}`, err => {
     if (err) {
       console.error(err);
       return res.status(500).send(err);
@@ -56,7 +56,7 @@ app.put('/api/news/update/:id', (req, res) => {
   } else {
 
     const file = req.files.file;
-    file.mv(`${__dirname}/client/build/img/news/${file.name}`, err => {
+    file.mv(`${__dirname}/client/public/img/news/${file.name}`, err => {
       if (err) {
         console.error(err);
         return res.status(500).send(err);
@@ -84,7 +84,7 @@ app.post('/api/products/save', (req, res) => {
 
   const file = req.files.fileProducts;
 
-  file.mv(`${__dirname}/client/build/img/products/${file.name}`, err => {
+  file.mv(`${__dirname}/client/public/img/products/${file.name}`, err => {
     if (err) {
       console.error(err);
       return res.status(500).send(err);
@@ -116,7 +116,7 @@ app.put('/api/products/update/:id', (req, res) => {
   } else {
 
     const file = req.files.file;
-    file.mv(`${__dirname}/client/build/img/products/${file.name}`, err => {
+    file.mv(`${__dirname}/client/public/img/products/${file.name}`, err => {
       if (err) {
         console.error(err);
         return res.status(500).send(err);

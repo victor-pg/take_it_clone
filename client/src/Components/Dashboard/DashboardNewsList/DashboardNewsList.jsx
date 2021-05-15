@@ -17,12 +17,17 @@ const DashboardNewsList = () => {
     const [text, setText] = useState('');
     const [newImage, setNewImage] = useState('');
 
+
     useEffect(() => {
-        axios.get('/api/news')
-            .then(res => setNews(res.data))
-            .catch(err => console.log(err));
+        getAllNews()
         getCurrentArticle(currentId);
     }, [currentId])
+
+    const getAllNews=async()=>{
+        await axios.get('/api/news')
+            .then(res => setNews(res.data))
+            .catch(err => console.log(err));
+    }    
 
     const changeModalState = (id) => {
         setShowUpdateModal(!showUpdateModal);
@@ -96,7 +101,10 @@ const DashboardNewsList = () => {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },
-            }).then((result) => alert(result.data.message));
+            }).then((result) => {
+                alert(result.data.message)
+                setShowUpdateModal(false);
+            });
         } catch (err) {
             alert('A aparut o problemă');
         }

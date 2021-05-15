@@ -10,17 +10,23 @@ const Footer=()=>{
             <div className="comunicare">
                 <div className="container">
                     <p>SUNTEM DESCHIȘI PENTRU COMUNICARE</p>
-                    <button>Scrieti-ne</button>
+                    <a href="https: //www.facebook.com/takeit.md" target="_blank" rel="noreferrer">
+                        Scrieți-ne
+                    </a>
                 </div>
             </div>
             <div className="number">
                 <div className="container">
                     <p className="footer-title">SUNTEM DESCHIȘI PENTRU COMUNICARE</p>
-                    <p className="footer-email">test@test.test</p>
-                    <p className="footer-number">+373 00 00 00 00</p>
+                    <p className="footer-email">sales@takeit.md</p>
+                    <p className="footer-number">+373 79 33 99 33</p>
                     <div className="footer-icons">
-                        <FaFacebook/>
-                        <FaInstagram/>
+                        <a href="https://www.facebook.com/takeit.md/" target="_blank" rel="noreferrer">
+                            <FaFacebook/>
+                        </a>
+                        <a href="https://www.instagram.com/take_it_srl/" target="_blank" rel="noreferrer">
+                            <FaInstagram/>
+                        </a>
                     </div>
                 </div>
             </div>

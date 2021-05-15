@@ -62,6 +62,7 @@ const CatalogPage = () => {
                                 <li><ScrollLink to="zebra" spy={true} smooth={true}>Zebra</ScrollLink></li>
                                 <li><ScrollLink to="bizebra" spy={true} smooth={true}>Bizebra</ScrollLink></li>
                                 <li><ScrollLink to="tsc" spy={true} smooth={true}>TSC</ScrollLink></li>
+                                <li><ScrollLink to="tsc" spy={true} smooth={true}>Produs nou</ScrollLink></li>
                             </ul>
                             <hr className="catalog-delimitator" />
                         </div>

@@ -4,9 +4,9 @@ import Modal from 'react-modal';
 import './ModalWindow.scss';
 
 
-const ModalWindow = ({ message, htmlContent, showCloseButton,customStyles }) => {
+const ModalWindow = ({ message, htmlContent, showCloseButton,customStyles,isOpen }) => {
 
-    const [modalIsOpen, setIsOpen] = React.useState(true);
+    const [modalIsOpen, setIsOpen] = React.useState(isOpen || true);
 
     // function openModal() {
     //     setIsOpen(true);

@@ -5,12 +5,14 @@ import MainPage from './Components/MainPage/MainPage'
 import CatalogPage from './Components/CatalogPage/CatalogPage';
 import CatalogItemDetails from './Components/CatalogItemDetails/CatalogItemDetails';
 import Dashboard from './Components/Dashboard/Dashboard';
+import NewsPage from './Components/NewsPage/NewsPage';
 
 const MainContainer = () => {
     return (
         <div>
             <Navbar />
             <Route path="/" exact component={MainPage} />
+            <Route path="/news"  component={NewsPage} />
             <Redirect to="/" />
         </div>
     );

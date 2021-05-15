@@ -26,7 +26,13 @@ const Dashboard = () => {
                 localStorage.setItem('isLoggedIn', true);
                 setIsLoggedIn('true');
             })
-            .catch(err => alert('Date gresite'))
+            .catch(err => {
+                if(username==='' || password===''){
+                    alert('Completati toate campurile')
+                }else{
+                    alert('Date gresite')
+                }
+            })
     }
     const handleLogout = () => {
         axios.post('/api/auth/logout', { username })
@@ -49,7 +55,7 @@ const Dashboard = () => {
                         <label htmlFor="password">Parolă</label>
                         <input type="password" name="password" onChange={handlePassword} />
                     </div>
-                    <button className="submit-button" onClick={handleSubmit}>Login</button>
+                    <button className="dashboard-submit-button" onClick={handleSubmit}>Login</button>
                 </div>
             </div>
         );

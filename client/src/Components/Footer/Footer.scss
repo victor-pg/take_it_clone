@@ -14,7 +14,7 @@ footer{
             justify-content: space-around;
             align-items: center;
 
-            button{
+            a{
                 background-color: #38ba22;
                 color:white;
                 border:none;
@@ -22,6 +22,10 @@ footer{
                 font-size: 16px;
                 font-weight: bold;
                 cursor: pointer;
+
+                &:hover{
+                    text-decoration: none;
+                }
             }
         }
     }
@@ -54,8 +58,14 @@ footer{
                 justify-content: center;
                 align-items: center;
 
+                a{
+                    text-decoration: none;
+                    color:inherit;
+                    background-color: inherit;
+                }
+
                 *{
-                    margin:5px;
+                    margin:3px;
                     width:48px;
                     height: 48px;
                 }

@@ -33,7 +33,7 @@ const Navbar = () => {
                     <input type="tel" id="phone" required name="phone" placeholder="+373" pattern="/^\+373\[0-9]\{2\}-\[0-9]\{2\}-\[0-9]\{2\}-\[0-9]\{2\}$/i" />
                 </div>
                 {/* <input type="submit" value="Primeste oferta" className="submit-button" /> */}
-                <a href="tel:1111111111" className="submit-button">Sunați-ne</a>
+                <a href="tel:+37330001015" className="submit-button">Sunați-ne</a>
             </form>
         );
     };
@@ -54,8 +54,8 @@ const Navbar = () => {
                 <div className="block-with-nav-items">
                     <ul className="nav-items">
                         <li><ScrollLink to="services" spy={true} smooth={true}>Serviciile noastre</ScrollLink></li>
-                        <li><ScrollLink to="clients" spy={true} smooth={true}>Clientii nostri</ScrollLink></li>
-                        <li><ScrollLink to="news" spy={true} smooth={true}>Noutati</ScrollLink></li>
+                        <li><ScrollLink to="clients" spy={true} smooth={true}>Clienții noștri</ScrollLink></li>
+                        <li><ScrollLink to="news" spy={true} smooth={true}>Noutăți</ScrollLink></li>
                         <li><ScrollLink to="about" spy={true} smooth={true}>Despre</ScrollLink></li>
                         <li><ScrollLink to="partners" spy={true} smooth={true}>Parteneri</ScrollLink></li>
                         <li><ScrollLink to="footer" spy={true} smooth={true}>Contacte</ScrollLink></li>
