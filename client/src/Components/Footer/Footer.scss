@@ -2,6 +2,21 @@ footer{
     width: 100%;
     font-family: 'Roboto',sans-serif;
 
+    .footer-details{
+        display: flex;
+        width:100%;
+
+        .footer-map,.number{
+            width:50%;
+        }
+        .footer-map{
+            iframe{
+                // border:5px solid #242424 !important;
+            }
+        }
+    }
+    
+
     .comunicare{
         background-color: #f3f3f3;
         font-weight: 300;

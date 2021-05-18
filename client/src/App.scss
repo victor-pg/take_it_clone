@@ -267,6 +267,18 @@ ul {
         .footer-number {
             font-size: 28px !important;
         }
+        .footer-details{
+            flex-direction: column;
+
+            .footer-map,.number{
+                width:100%;
+            }
+            .footer-map{
+                iframe{
+                    height:100%;
+                }
+            }
+        }
     }
     // news section
 

@@ -139,15 +139,10 @@ app.put('/api/products/update/:id', (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.use('/',express.static(path.join(__dirname,'client','build')));
-// app.use('/takeit-admin',express.static(path.join(__dirname,'client-dashboard','build')));
 
 app.get('*',(req,res)=>{
   res.sendFile(path.resolve(__dirname,'client','build','index.html'))
 })
-
-// app.get('/takeit-admin',(req,res)=>{
-//   res.sendFile(path.resolve(__dirname,'client-dashboard','build','index.html'))
-// })
 
 const start = async () => {
   try {
