@@ -22,6 +22,7 @@ const NewsSection = () => {
   return (
     <div className="news-section" id="news">
       <div className="container">
+        <h1>Noutăți</h1>
         <div className="news-section-content">
           {news.map((item) => {
             return <NewsItem item={item} key={item.id} />;

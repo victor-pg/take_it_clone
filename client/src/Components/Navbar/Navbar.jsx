@@ -68,7 +68,7 @@ const Navbar = () => {
                             >
                                 Sunați-ne
                             </button> */}
-                            <a href="tel:1111111111" className="submit-button">Sunați-ne</a>
+                            <a href="tel:+37330001015" className="submit-button">Sunați-ne</a>
                             {
                                 showModal ? <ModalWindow htmlContent={modalHtmlContent} showCloseButton={false} />
                                     : null

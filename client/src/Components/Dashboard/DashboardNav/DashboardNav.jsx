@@ -196,9 +196,9 @@ const DashboardNav = ({ handleLogout }) => {
                     <Nav.Link>
                         <ScrollLink className="text-muted" to="dashboard-tsc" spy={true} smooth={true}>TSC</ScrollLink>
                     </Nav.Link>
-                    <Nav.Link>
+                    {/* <Nav.Link>
                         <ScrollLink className="text-muted" to="dashboard-tsc" spy={true} smooth={true}>Produs nou</ScrollLink>
-                    </Nav.Link>
+                    </Nav.Link> */}
                     <Nav className="m-1">
                         <Button variant={"warning"} onClick={changeNewsModalState} className="text-white" >Adaugă articol nou</Button>
                     </Nav>
