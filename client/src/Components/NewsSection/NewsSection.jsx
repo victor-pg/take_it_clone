@@ -22,15 +22,23 @@ const NewsSection = () => {
   return (
     <div className="news-section" id="news">
       <div className="container">
-        <h1>Noutăți</h1>
-        <div className="news-section-content">
-          {news.map((item) => {
-            return <NewsItem item={item} key={item.id} />;
-          })}
-        </div>
-        <Link to="/news" className="news-section-view-more">
-          <button>Citește toate articolele</button>
-        </Link>
+
+        {news.length <= 0 ?
+          <div>
+            Nu există noutăți
+          </div>
+          : <>
+            <h1 className="news-section-title">Noutăți</h1>
+            <div className="news-section-content">
+              {news.map((item) => {
+                return <NewsItem item={item} key={item.id} />;
+              })}
+            </div>
+            <Link to="/news" className="news-section-view-more">
+              <button>Citește toate articolele</button>
+            </Link>
+          </>
+        }
       </div>
     </div>
   );

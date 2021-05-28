@@ -1,42 +1,42 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll'
-import ModalWindow from '../ModalWindow/ModalWindow';
+// import ModalWindow from '../ModalWindow/ModalWindow';
 
 import './Navbar.scss';
 
 const Navbar = () => {
     const [showNav, setShowNav] = useState(false);
-    const [showModal, setShowModal] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
 
     const changeNavState = () => {
         setShowNav(!showNav);
     }
-    const changeModalState = () => {
-        setShowModal(!showModal);
-    }
+    // const changeModalState = () => {
+    //     setShowModal(!showModal);
+    // }
 
     let navHeaderClass = showNav ? 'show-nav-header' : '';
     let navContentClass = showNav ? 'show-nav-content' : '';
     let positionInherit = showNav ? 'p-inherit' : '';
 
-    const modalHtmlContent = () => {
-        return (
-            <form action="#" method="post" className="modal-html-content">
-                <div className="form-group">
-                    <label htmlFor="name">Numele Dvs.</label>
-                    <input type="text" name="name" required /> 
-                </div>
+    // const modalHtmlContent = () => {
+    //     return (
+    //         <form action="#" method="post" className="modal-html-content">
+    //             <div className="form-group">
+    //                 <label htmlFor="name">Numele Dvs.</label>
+    //                 <input type="text" name="name" required /> 
+    //             </div>
 
-                <div className="form-group">
-                    <label htmlFor="phone">Telefonul</label>
-                    <input type="tel" id="phone" required name="phone" placeholder="+373" pattern="/^\+373\[0-9]\{2\}-\[0-9]\{2\}-\[0-9]\{2\}-\[0-9]\{2\}$/i" />
-                </div>
-                {/* <input type="submit" value="Primeste oferta" className="submit-button" /> */}
-                <a href="tel:+37330001015" className="submit-button">Sunați-ne</a>
-            </form>
-        );
-    };
+    //             <div className="form-group">
+    //                 <label htmlFor="phone">Telefonul</label>
+    //                 <input type="tel" id="phone" required name="phone" placeholder="+373" pattern="/^\+373\[0-9]\{2\}-\[0-9]\{2\}-\[0-9]\{2\}-\[0-9]\{2\}$/i" />
+    //             </div>
+    //             {/* <input type="submit" value="Primeste oferta" className="submit-button" /> */}
+    //             <a href="tel:+37330001015" className="submit-button">Sunați-ne</a>
+    //         </form>
+    //     );
+    // };
 
     return (
         <div className={`navbar2 ${positionInherit} `}>
@@ -69,10 +69,10 @@ const Navbar = () => {
                                 Sunați-ne
                             </button> */}
                             <a href="tel:+37330001015" className="submit-button">Sunați-ne</a>
-                            {
+                            {/* {
                                 showModal ? <ModalWindow htmlContent={modalHtmlContent} showCloseButton={false} />
                                     : null
-                            }
+                            } */}
                         </li>
                     </ul>
                 </div>

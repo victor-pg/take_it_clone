@@ -123,11 +123,16 @@
 //responsive
 
 @media screen and (max-width: 980px) {
+    body,html{
+        overflow-x: hidden;
+    }
     .catalog-page {
-        overflow: hidden !important;
+        width:100%;
         .container {
             width: 100% !important;
-            overflow: hidden !important;
+            overflow-x: hidden !important;
+            padding: 0;
+            margin: 0;
             .catalog-page-black-section {
                 z-index: 999;
                 position: absolute;
@@ -176,7 +181,7 @@
     }
     .nav-mobile {
         width: 100%;
-        height: 90vh;
+        height: 100vh;
         position: absolute;
         overflow: hidden;
         z-index: 100;
@@ -281,6 +286,8 @@
     }
 
     .catalog-item-details{
+        padding: 0 !important;
+        margin: 0 !important;
         width:100%;
         height: auto !important;
         flex-direction: column;

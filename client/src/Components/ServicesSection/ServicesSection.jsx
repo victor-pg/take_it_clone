@@ -49,8 +49,9 @@ const ServicesSection = () => {
                 Suntem partenerul dvs, vă oferim o serie de soluții complexe pentru automatizarea afacerii și imbunătățirea efecienței personalului, precum și sporirea loialității clienților dvs.
             </p>
             <div className="service-section-end-icons">
-                <FaFacebook className="icon-size" />
-                <FaInstagram className="icon-size" />
+                <a href="https://www.facebook.com/takeit.md/" target="_blanc" className="reset-this facebook-icon"><FaFacebook className="icon-size" /></a>
+                <a href="https://www.instagram.com/take_it_srl/" target="_blanc" className="reset-this instagram-icon"><FaInstagram className="icon-size" /></a>
+                
             </div>
             <div className="arrow-up-block">
                 <AiOutlineArrowUp className="arrow-up" onClick={scrollToTop}

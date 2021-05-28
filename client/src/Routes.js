@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route,Redirect,HashRouter } from 'react-router-dom';
+import { Switch, Route, Redirect, HashRouter } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import MainPage from './Components/MainPage/MainPage'
 import CatalogPage from './Components/CatalogPage/CatalogPage';
@@ -12,7 +12,7 @@ const MainContainer = () => {
         <div>
             <Navbar />
             <Route path="/" exact component={MainPage} />
-            <Route path="/news"  component={NewsPage} />
+            <Route path="/news" component={NewsPage} />
             <Redirect to="/" />
         </div>
     );
@@ -22,8 +22,8 @@ const Routes = () => {
         <HashRouter>
             <Switch>
                 <Route path="/catalog" exact component={CatalogPage} />
-                <Route path="/details/:id" exact component={({match})=><CatalogItemDetails id={match.params.id} />} />
-                <Route path="/takeit-admin" exact component={Dashboard}/>
+                <Route path="/details/:id" exact component={({ match }) => <CatalogItemDetails id={match.params.id} />} />
+                <Route path="/takeit-admin" exact component={Dashboard} />
                 <Route path="/" component={MainContainer} />
             </Switch>
         </HashRouter>

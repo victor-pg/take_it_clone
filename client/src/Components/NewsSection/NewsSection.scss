@@ -9,6 +9,11 @@
         display:flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+
+        .news-section-title{
+            padding-top: 20px;
+        }
 
         .news-section-content{
             width:100%;
