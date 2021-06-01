@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
-import { Navbar, Nav, Button } from 'react-bootstrap';
+import { Navbar, Nav, Button,Dropdown } from 'react-bootstrap';
 import { Link as ScrollLink } from 'react-scroll';
 import ModalWindow from '../../ModalWindow/ModalWindow';
 
@@ -258,9 +258,33 @@ const DashboardNav = ({ handleLogout }) => {
                     </Nav.Link>
                   );
                 })}
+
+                    <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        Acțiuni
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item>
+                            <Button variant={"warning"} onClick={changeNewsModalState} className="text-white" >Adaugă articol nou</Button>
+                        </Dropdown.Item>
+                        <Dropdown.Item >
+                            <Button variant={"success"} onClick={changeProductsModalState}>Adaugă produs nou</Button>
+                        </Dropdown.Item>
+                        <Dropdown.Item>
+                            <Button variant={"primary"} onClick={changeNewTypeModalState}>Adaugă tip nou</Button>
+                        </Dropdown.Item>
+                        <Dropdown.Item>
+                            <Button variant={"secondary"} onClick={changeDeleteTypeModalState}>Șterge tip</Button>
+                        </Dropdown.Item>
+                        <Dropdown.Item>
+                            <Button onClick={handleLogout} variant={"danger"}>Logout</Button>
+                        </Dropdown.Item>
+                    </Dropdown.Menu>
+                    </Dropdown>
                 
 
-                    <Nav className="m-1">
+                    {/* <Nav className="m-1">
                         <Button variant={"warning"} onClick={changeNewsModalState} className="text-white" >Adaugă articol nou</Button>
                     </Nav>
                     <Nav className="m-1">
@@ -274,7 +298,9 @@ const DashboardNav = ({ handleLogout }) => {
                     </Nav>
                     <Nav className="m-1">
                         <Button onClick={handleLogout} variant={"danger"}>Logout</Button>
-                    </Nav>
+                    </Nav> */}
+
+
                 </Nav>
 
                 {showNewsModal ?
