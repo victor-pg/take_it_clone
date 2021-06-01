@@ -12,6 +12,7 @@ app.use(cors());
 app.use(fileUpload());
 app.use("/api/", require('./routes/products.routes'));
 app.use("/api/", require('./routes/news.routes'));
+app.use("/api/", require('./routes/product_types.routes'));
 app.use("/api/auth", require('./routes/auth.routes'));
 
 app.post('/api/news/save', (req, res) => {
