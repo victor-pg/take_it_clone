@@ -18,9 +18,9 @@
         color:white;
         width:90%;
         position: absolute;
-        top:50%;
-        left:50%;
-        transform: translate(-50%,-50%);
+        top:40%;
+        left:40%;
+        transform: translate(-40%,-40%);
         text-align: center;
 
         .welcome-section-title{
@@ -36,7 +36,7 @@
     }
     .welcome-section-arrow{
         position: absolute;
-        bottom: 0%;
+        bottom: 12%;
         left:50%;
         z-index: 11;
         color:white;
