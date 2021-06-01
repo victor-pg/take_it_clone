@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import { Link as ScrollLink } from 'react-scroll';
@@ -21,12 +21,35 @@ const DashboardNav = ({ handleLogout }) => {
     const [type, setType] = useState('ccl');
     const [fileProducts, setFileProducts] = useState('');
 
+    const [productTypes,setProductTypes]=useState([]);
+    const [showNewTypeModal,setShowNewTypeModal] = useState(false);
+    const [showDeleteTypeModal,setShowDeleleTypeModal] = useState(false);
+    const [deletedType,setDeletedType]=useState('');
+    const [newType,setNewType]=useState('');
+
+    useEffect(() => {
+        getProductTypes();
+      }, []);
+
+    const getProductTypes = async () => {
+        await axios
+          .get("/api/products/types")
+          .then((res) => setProductTypes(res.data))
+          .catch((err) => console.log("Error while getting product types " + err));
+      };
+
     const changeNewsModalState = () => {
         setShowNewsModal(!showNewsModal);
     }
 
     const changeProductsModalState = () => {
         setShowProductsModal(!showProductsModal);
+    }
+    const changeNewTypeModalState = () =>{
+        setShowNewTypeModal(!showNewTypeModal)
+    }
+    const changeDeleteTypeModalState = () =>{
+        setShowDeleleTypeModal(!showDeleteTypeModal)
     }
 
     const getImage = (e) => {
@@ -106,6 +129,34 @@ const DashboardNav = ({ handleLogout }) => {
         }
     };
 
+    const saveNewType = async e =>{
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('type',newType);
+        
+        try {
+            await axios.post('/api/products/types/save',formData)
+                .then(result=>alert(result.data.message))
+        } catch (error) {
+            alert('A aparut o problemă')
+            console.log(error)
+        }
+    }
+    const deleteType = async e =>{
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('type',deletedType);
+
+        try {
+            await axios.post('/api/products/types/delete',formData)
+                .then(result=>alert(result.data.message))
+        } catch (error) {
+            alert('A aparut o problemă')
+            console.log(error)
+        }
+    }
+    
+
     const newsModalHtmlContent = () => {
         return (
             <form className="news-modal-html-content" onSubmit={saveArticle}>
@@ -147,13 +198,9 @@ const DashboardNav = ({ handleLogout }) => {
                 <div className="modal-input-group">
                     <label htmlFor="type">Tip produs</label>
                     <select name="type" value={type} required onChange={(e) => setType(e.target.value)}>
-                        <option value="ccl">CCL</option>
-                        <option value="aures">Aures</option>
-                        <option value="datalogic">Datalogic</option>
-                        <option value="shopguard">Shopguard</option>
-                        <option value="zebra">Zebra</option>
-                        <option value="bizebra">Bizebra</option>
-                        <option value="tsc">TSC</option>
+                        {productTypes.map(({type})=>{
+                            return <option value={type} >{type}</option>
+                        })}
                     </select>
                 </div>
                 <div className="modal-input-group">
@@ -165,40 +212,54 @@ const DashboardNav = ({ handleLogout }) => {
         );
     }
 
+    const newTypeHtmlContent = () => {
+        return (
+            <form className="type-modal-html-content" onSubmit={saveNewType}>
+                <div className="modal-input-group">
+                    <label htmlFor="newType">Tipul</label>
+                    <input type="text" name="newType" required onChange={(e) => setNewType(e.target.value)} />
+                </div>
+                <input type="submit" value="Creează" className="btn btn-primary d-block m-auto" />
+            </form>
+        );
+    }
+    const deleteTypeHtmlContent = () => {
+        return (
+            <form className="type-modal-html-content" onSubmit={deleteType}>
+                <div className="modal-input-group">
+                    <label htmlFor="deletedType">Tipul</label>
+                    <select name="deletedType" id="deletedType" value={deletedType} onChange={(e) => setDeletedType(e.target.value)}>
+                    {productTypes.map(({type})=>{
+                            return <option value={type} >{type}</option>
+                        })}
+                    </select>
+                </div>
+                <input type="submit" value="Șterge" className="btn btn-primary d-block m-auto" />
+            </form>
+        );
+    }
+
     return (
         <>
-            <Navbar bg="dark" variant="dark" fixed="top" >
+            <Navbar bg="dark" variant="dark" fixed="top" className="dashboard-navbar">
                 <Navbar.Brand>
                     <ScrollLink className="text-white" to="dashboard" spy={true} smooth={true} >TakeIT dashboard</ScrollLink>
                 </Navbar.Brand>
                 <Nav className="mr-auto">
+
                     <Nav.Link>
                         <ScrollLink className="text-muted" to="dashboard-news" spy={true} smooth={true}>Noutăți</ScrollLink>
                     </Nav.Link>
-                    <Nav.Link>
-                        <ScrollLink className="text-muted" to="dashboard-ccl" spy={true} smooth={true}>CCL</ScrollLink>
+
+                    {productTypes.map(({ type }) => {
+                  return (
+                    <Nav.Link className="text-capitalize">
+                        <ScrollLink className="text-muted" to={`dashboard-${type}`} spy={true} smooth={true}>{type}</ScrollLink>
                     </Nav.Link>
-                    <Nav.Link>
-                        <ScrollLink className="text-muted" to="dashboard-aures" spy={true} smooth={true}>Aures</ScrollLink>
-                    </Nav.Link>
-                    <Nav.Link>
-                        <ScrollLink className="text-muted" to="dashboard-datalogic" spy={true} smooth={true}>Datalogic</ScrollLink>
-                    </Nav.Link>
-                    <Nav.Link>
-                        <ScrollLink className="text-muted" to="dashboard-shopguard" spy={true} smooth={true}>Shopguard</ScrollLink>
-                    </Nav.Link>
-                    <Nav.Link>
-                        <ScrollLink className="text-muted" to="dashboard-zebra" spy={true} smooth={true}>Zebra</ScrollLink>
-                    </Nav.Link>
-                    <Nav.Link>
-                        <ScrollLink className="text-muted" to="dashboard-bizebra" spy={true} smooth={true}>Bizebra</ScrollLink>
-                    </Nav.Link>
-                    <Nav.Link>
-                        <ScrollLink className="text-muted" to="dashboard-tsc" spy={true} smooth={true}>TSC</ScrollLink>
-                    </Nav.Link>
-                    {/* <Nav.Link>
-                        <ScrollLink className="text-muted" to="dashboard-tsc" spy={true} smooth={true}>Produs nou</ScrollLink>
-                    </Nav.Link> */}
+                  );
+                })}
+                
+
                     <Nav className="m-1">
                         <Button variant={"warning"} onClick={changeNewsModalState} className="text-white" >Adaugă articol nou</Button>
                     </Nav>
@@ -206,9 +267,16 @@ const DashboardNav = ({ handleLogout }) => {
                         <Button variant={"success"} onClick={changeProductsModalState}>Adaugă produs nou</Button>
                     </Nav>
                     <Nav className="m-1">
+                        <Button variant={"primary"} onClick={changeNewTypeModalState}>Adaugă tip nou</Button>
+                    </Nav>
+                    <Nav className="m-1">
+                        <Button variant={"secondary"} onClick={changeDeleteTypeModalState}>Șterge tip</Button>
+                    </Nav>
+                    <Nav className="m-1">
                         <Button onClick={handleLogout} variant={"danger"}>Logout</Button>
                     </Nav>
                 </Nav>
+
                 {showNewsModal ?
                     <ModalWindow
                         message="Adaugă un articol nou"
@@ -221,6 +289,20 @@ const DashboardNav = ({ handleLogout }) => {
                         message="Adaugă un produs nou"
                         customStyles={customProductsStyles}
                         htmlContent={productsModalHtmlContent}
+                    />
+                    : null}
+                {showNewTypeModal ?
+                    <ModalWindow
+                        message="Adaugă un tip nou"
+                        customStyles={null}
+                        htmlContent={newTypeHtmlContent}
+                    />
+                    : null}
+                {showDeleteTypeModal ?
+                    <ModalWindow
+                        message="Alegeți tipul"
+                        customStyles={null}
+                        htmlContent={deleteTypeHtmlContent}
                     />
                     : null}
             </Navbar>
