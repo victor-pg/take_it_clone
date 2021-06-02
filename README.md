@@ -2,7 +2,7 @@ Front : ReactJs
 
 Back : ExpressJs
 
-Database : MongoDB ( remote version : cloud.mongodb.com  )
+Database : PostgreSQL
 
 Start project :
 1) npm install
