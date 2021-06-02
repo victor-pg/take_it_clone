@@ -1,0 +1,597 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.11 (Debian 11.11-0+deb10u1)
+-- Dumped by pg_dump version 11.11 (Debian 11.11-0+deb10u1)
+
+-- Started on 2021-06-02 09:17:54 EEST
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 197 (class 1259 OID 24652)
+-- Name: news; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.news (
+    id integer NOT NULL,
+    title character varying(450) NOT NULL,
+    subtitle character varying(450) NOT NULL,
+    imgurl character varying(450) NOT NULL,
+    text character varying(450) NOT NULL,
+    "timestamp" timestamp without time zone DEFAULT CURRENT_TIMESTAMP
+);
+
+
+ALTER TABLE public.news OWNER TO postgres;
+
+--
+-- TOC entry 196 (class 1259 OID 24650)
+-- Name: news_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.news_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.news_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3064 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: news_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.news_id_seq OWNED BY public.news.id;
+
+
+--
+-- TOC entry 203 (class 1259 OID 32883)
+-- Name: product_types; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.product_types (
+    id integer NOT NULL,
+    type character varying
+);
+
+
+ALTER TABLE public.product_types OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 32881)
+-- Name: product_types_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.product_types_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.product_types_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3065 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: product_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.product_types_id_seq OWNED BY public.product_types.id;
+
+
+--
+-- TOC entry 199 (class 1259 OID 24679)
+-- Name: products; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.products (
+    id integer NOT NULL,
+    name character varying(450) NOT NULL,
+    description text NOT NULL,
+    imgurl character varying(450) NOT NULL,
+    type character varying(450) NOT NULL,
+    short_desc character varying(250)
+);
+
+
+ALTER TABLE public.products OWNER TO postgres;
+
+--
+-- TOC entry 198 (class 1259 OID 24677)
+-- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.products_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.products_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3066 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.products_id_seq OWNED BY public.products.id;
+
+
+--
+-- TOC entry 201 (class 1259 OID 24691)
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    username character varying(100) NOT NULL,
+    password character varying(450) NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 24689)
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3067 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- TOC entry 2917 (class 2604 OID 24655)
+-- Name: news id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.news ALTER COLUMN id SET DEFAULT nextval('public.news_id_seq'::regclass);
+
+
+--
+-- TOC entry 2921 (class 2604 OID 32886)
+-- Name: product_types id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.product_types ALTER COLUMN id SET DEFAULT nextval('public.product_types_id_seq'::regclass);
+
+
+--
+-- TOC entry 2919 (class 2604 OID 24682)
+-- Name: products id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products ALTER COLUMN id SET DEFAULT nextval('public.products_id_seq'::regclass);
+
+
+--
+-- TOC entry 2920 (class 2604 OID 24694)
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- TOC entry 3052 (class 0 OID 24652)
+-- Dependencies: 197
+-- Data for Name: news; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.news (id, title, subtitle, imgurl, text, "timestamp") VALUES (40, 'Articol1', 'Subtitlu1', 'temp_news.jpg', 'Conținut1', '2021-05-15 14:55:18.396572');
+INSERT INTO public.news (id, title, subtitle, imgurl, text, "timestamp") VALUES (41, 'Articol2', 'Subtitlu2', 'temp_news.jpg', 'Conținut2', '2021-05-15 14:56:27.419849');
+INSERT INTO public.news (id, title, subtitle, imgurl, text, "timestamp") VALUES (42, 'Articol3', 'Subtitlu3', 'temp_news.jpg', 'Conținut3', '2021-05-15 14:56:39.651498');
+
+
+--
+-- TOC entry 3058 (class 0 OID 32883)
+-- Dependencies: 203
+-- Data for Name: product_types; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.product_types (id, type) VALUES (1, 'ccl');
+INSERT INTO public.product_types (id, type) VALUES (2, 'aures');
+INSERT INTO public.product_types (id, type) VALUES (3, 'datalogic');
+INSERT INTO public.product_types (id, type) VALUES (4, 'shopguard');
+INSERT INTO public.product_types (id, type) VALUES (5, 'zebra');
+INSERT INTO public.product_types (id, type) VALUES (6, 'bizebra');
+INSERT INTO public.product_types (id, type) VALUES (7, 'tsc');
+
+
+--
+-- TOC entry 3054 (class 0 OID 24679)
+-- Dependencies: 199
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (3, 'Chioșc de autoservire pentru supermarket', 'CCL Tech permite supermarketului să dețină un control complet și să nu se îngrijoreze de detaliile tehnice datorită tehnologiei de autoservire. Vă puteți bucura de un chioșc de verificare automată a fără să vă faceți griji cu privire la angajamentele POS pe termen lung și puteți fi, de asemenea, sigur că veți obține o rentabilitate mai rapidă a investiției, deoarece acum puteți reutiliza datele existente din sistemul de verificare.
+
+Chioșcul CCL Supermarket oferă întreprinderilor noi modalități de a interacționa cu clienții oferindu-le posibilitatea de a se autoservi.
+
+Capacitățile de gestionare la distanță ale CCL simplifică implementarea rapidă, monitorizarea și gestionarea unui chioșc de autoservire. Supermarket Self-Checkout Kiosk este o unitate de integrare perfectă care se concentrează pe oferirea de spațiu pentru orice combinație și configurație a dispozitivelor OEM, rămânând în același timp elegant și compact, în timp ce CCL dezvoltă o soluție Smart Self-Checkout pentru a economisi costurile forței de muncă, a reduce timpii de așteptare în cozi și pentru înregistrarea vânzărilor fiecărui produs.
+Camerele înregistrează și analizează comportamentul clienților din magazin, contribuind la reducerea criminalității și furtului. Plățile la chioșc reduc nevoia de obiecte personale portabile (bani, portofel etc.) la cumpărături. Autoservirea economisește din timpul clienților și minimizează dependența de personalul de din magazin. Probele pentru testarea clinică de laborator trebuie urmărite pentru a se asigura că rezultatele testelor sunt corecte și se potrivesc cu exactitate personalității pacientului.', 'ccl-3.jpg', 'ccl', NULL);
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (5, 'Kiosk Kosmos', 'Ultra-stabil datorită structurii sale autoportante specifice, chioșcul KOSMOS se instalează pe podea fără fixări datorită unui piedestal adaptat. Designul include integrarea controlată a subsistemelor de înaltă calitate și performanță, cum ar fi sistemele cu ecran tactil YUNO de 15 ", 21,5" sau 27 ", propuse atât în ​​modul portret, cât și în modul peisaj.
+De asemenea, un sistem de imprimare a chitanțelor cu funcție de prezentare / retragere, precum și terminale de plată.
+Datorită numeroaselor opțiuni de gestionare, KOSMOS este potrivit pentru companiile care vând cu amănuntul și oferă o gamă largă de produse cu livrare domiciliu: rezervarea și preluarea comenzilor, clic și colectare, ajutor la cumpărare și vânzare, aranjarea la coadă, gestionarea abonamentelor și cardurilor de fidelizare a clienților și a altor activități promoționale', 'aures-1.png', 'aures', NULL);
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (6, 'SANGO', 'SANGO - este un terminal POS original și inovator universal; una dintre numeroasele sale caracteristici unice este eliberarea completă a spațiului de sub ecranul tactil la checkout.
+Fără o bază intruzivă, stand sau picior, spre deosebire de alte sisteme EPOS de pe piață, SANGO planează fără efort ca și cum nu ar avea greutate, deschizând spațiul ocupat în mod tradițional de unitatea centrală și placa de bază. Atașat elegant și suspendat de un braț offset din aluminiu turnat sub presiune, un adevărat exoschelet al sistemului și suport pentru nucleul său tehnologic (CPU), SANGO combină estetica și ergonomia minimalistă (un sertar dedicat poate fi plasat sub ecran) și are o putere mai mică de consum.
+Stabil și rigid, baza sa metalică subțire (o extensie naturală a celei subțiri) acționează ca un radiator.
+Acest nou EPOS se va adapta la cerințele tehnologice ale tuturor utilizatorilor: sunt disponibile 4 tipuri de procesoare, precum și o gamă largă de opțiuni de conectivitate
+', 'aures-2.png', 'aures', NULL);
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (7, 'Jazz', 'Această soluție hardware versatilă, disponibilă ca terminal EPOS clasic de montare pe stâlp (JAZZPOLE) sau chioșc de verificare automată (JAZZSCO), este potrivită pentru o varietate de platforme. Procesoare Intel, J1900, i3 și i5, protejează astfel viitorul JAZZ pe măsură ce tehnologia avansează.
+', 'aures-3.jpg', 'aures', NULL);
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (1, 'Chioșc informațional Scan&Go', 'Din ce în ce mai mulți consumatori oferă preferință portofelelor digitale și plăților mobile. Kiosk independent CCL, îi permite cumpărătorului să-și colecteze articolele, să le împacheteze și să le plătească fără a apela la ajutorul unui casier. Acest concept a devenit populat în multe lanțuri alimentare, restaurante fast-food și lanțuri de magazine din toată țara.
+
+Soluția a fost creată pentru a satisface nevoile punctelor de vânzare cu amănuntul și poate fi integrată pe ecrane de diferite dimensiuni, dispozitive de plată, imprimante și scanere. Clienții sunt deserviți mai repede și personalul lucrează mai eficient. În plus, numărul greșelilor comise este mai mic, erorile fiind reduse semnificativ în procesul de comandă.
+
+Care sunt opțiunile de plată?
+În prezent sunt metode de plăți prin Visa, MasterCard, UnionPay.
+', 'ccl-1.jpg', 'ccl', NULL);
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (2, 'Chioșc de autoservire cu ecran tactil CCL Tech', 'Chioșcurile de autoservire cu ecran tactil CCL Tech simplifică procesul de comandă ajutând clienții să găsească exact ceea ce doresc, favorizând loialitatea clienților și crescând nivelul de încredere al clienților față de o anumită afacere.
+
+Acum plățile au devenit flexibile, intuitive, cu autoservire, cu ecran tactil, pentru a simplifica / accelera comenzile, livrările, serviciile și pentru a vă spori rezultatele!
+Asigurați-vă operațiunile cu tehnologia potrivită și ajungeți la clienții dvs. Indiferent de locul în care aceștia se află. Serviciu direct și plăcut pentru clienți, disponibil pentru magazine de fast-food, cafenele, biblioteci și multe altele.
+Ecranul tactil Kiosk ajută la reducerea considerabilă a timpilor de așteptare a clienților.
+
+', 'ccl-2.jpg', 'ccl', ' ');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (8, 'Yuno', 'Este un sistem fără ventilatoare, compact, performant, cu o gamă de 3 procesoare diferite; Este disponibil în 2 formate (15.1 "tradițional 4: 3 și 15.6" 16: 9 lățime) și are un ecran de proiecție capacitiv multi-touch rezistent la șocuri și zgârieturi (tehnologie PCAP).
+Foarte flexibil, YUNO oferă opțiuni de montare VESA (montare pe perete sau stâlp), precum și o opțiune simplă cu ecran tactil (monitoare de 15,1 ''și 15,6'' largi).
+Versiunea standard are o unitate flash de 128 GB (SSD de 2,5 inci) și rezistă murdăriei în cele mai dure medii (grăsimi, firimituri, praf, stropi și resturi alimentare).
+Împreună cu procesoarele sale eficiente din punct de vedere energetic (Broadwell i5 sau i3 sau BayTrail J1900), construcția termoizolantă din aluminiu asigură conformitatea cu standardele de mediu (amprentă redusă de carbon)
+
+', 'aures-4.jpg', 'aures', NULL);
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (14, 'Memor 10', 'Performanța superioară a acestui PDA Android ™ cu funcții complete, inclusiv un nou model cu un motor de scanare 2D mega-pixeli pentru productivitate sporită, acceptă o varietate de aplicații într-o varietate de medii. Urmărirea produselor din tutun și filigranele Digimarc®.
+Computerul mobil Memor 10 demonstrează puterea și performanța unui smartphone Android ™ ușor de utilizat, compact cu un scaner de imagistică 2D integrat. Dispune de primul sistem de încărcare fără fir Datalogic din industrie, care, atunci când este combinat cu o baterie înlocuibilă, oferă beneficii ultra-fiabile de încărcare fără contact și de performanță.
+Memor 10 PDA se bazează pe o platformă modernă cu opt nuclee și pe un sistem de operare Android 8.1 (Oreo) cu GMS. Această specificație a fost aprobată de Google, care a recunoscut computerul mobil Memor 10 ca fiind unul dintre primele dispozitive mobile care se califică pentru Programul de dispozitive recomandate de Android Enterprise!
+Memor 10 PDA este disponibil și într-o versiune medicală, care are aceleași caracteristici, precum și o carcasă și accesorii rezistente la dezinfectare.', 'datalogic-6.png', 'datalogic', 'Terminal de colectare de date');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (21, 'Imprimantă mobilă ZQ620', 'Îmbunătățiți gestionarea stocurilor și a serviciului pentru clienți în magazinul dvs. Cu ajutorul imprimantei mobile ZQ620. ZQ620 îmbunătățește considerabil productivitatea angajaților cu ajutorul tehnologiei avansate, designului inovator, afișajului și gestionării superioare a bateriei, inclusiv tehnologie de trezire instantă și conectivitate wireless 802.11ac și Bluetooth rapidă.', 'zebra-1.jpg', 'zebra', 'Pentru imprimarea etichetelor, bonurilor');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (18, 'Twilight', 'Design modern, realizat din materiale Plexiglas™ de înaltă calitate, complet transparente.
+Twilight este proiectat într-un design elegant și modern. Iluminarea sa unică, atrăgătoare, cu opțiuni de culoare, îl face ideal pentru magazinele cu interioare moderne.
+Impulsuri digitale îmbunătățite
+Controlat cu ajutorul computerului
+Monitorizare de la distanță
+Plexiglas de cea mai bună calitate de la fabrica germană de plexiglas
+Disponibil în 3 variante de culoare.
+În versiunea mono, antena funcționează ca un dezactivator disponibil ca sistem TX / RX sau TRX electronic încorporat, elimină automat bruiajul de linie.
+Sistemul oferă protecție pentru o gamă largă de produse, prin utilizarea simultană a diferitelor tipuri de etichete.', 'shopguard-1.jpg', 'shopguard', 'Sistem anti-furt');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (19, 'Zento', 'Design luminos și nivel ridicat de siguranță în procesul de muncă.
+Coloanele din aluminiu extrudat și spațiul publicitar creează un stil proaspăt și modern. Antena este sigură și stabilă din punct de vedere mecanic. Zento este utilizat într-o gamă foarte largă de magazine cu amănuntul și este deosebit de popular în industria alimentară.
+Reclamele pot fi inserate cu ușurință în panoul antenei fără a scoate partea superioară. Antenele sunt disponibile în versiunile TX / RX și TRX,
+Conectivitate PC și monitorizare de la distanță
+Sistem de control comod
+Impuls digital sporit
+Posibilitatea de răspândire a reclamei
+Control cu ajutorul computerului
+Monitorizare la distanță
+Antene elegante și sigure
+Posibilitatea de integrare a unui contor wireless, se potrivește perfect cu toate punctele de vânzare
+Antena este capabilă să se auto-regleze și să se adapteze la mediu pentru a face față interferențelor electrice externe care pot provoca alarme false. Sistemul Zento oferă un nivel ridicat de siguranță operațională, sunt disponibile și antenele cu detector de metale încorporat.', 'shopguard-2.jpg', 'shopguard', 'Sistem anti-furt');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (20, 'SB20', 'Сel mai eficient instrument de afișare a mărfurilor cu amănuntul.
+Protejați și încarcați telefoanele mobile, tabletele, ceasurile, tastaturile, creioanele și camerele foto.
+- stabilitate îmbunătățită pentru tablete și DSLR-uri,
+- nivel suplimentar protecție mecanică,
+- sistem cu două porturi pentru cross-merchandising,
+- unitate de bază cu iluminare din spate cu LED
+■ Comutator de manipulare pentru securitate sporită
+■ Slot pentru cablu protejat cu schimbarea firelor de încărcare și senzori
+■ Nivelul sunetului 95dB
+■ Conexiune duală: doi senzori sau un cablu de încărcare plus un sensor
+■ Cablu de masă cu alarmă
+■ Comutator de manipulare pentru securitate sporită
+■ Conector de cablu protejat cu capete de încărcare unice interschimbabile: Micro USB, USB C, Apple Lightning
+■ Stabilitate suplimentară pentru tablete / iPad INTEGRARE ȘI FLEXIBILITATE
+■ O bază pentru toate dispozitivele
+■ Alegeți între cablu sau Recoiler pentru iPhone / iPad sau o combinație din amândouă
+■ Comutare momentană între afișajul plat și ce înclinat
+■ Flexibilitate conform mediul și condițiile magazinului dvs.
+■ Tasta de pornire / oprire este potrivită atât pentru afișajul de dimensiuni mari, cât și pentru afișajul din magazin.
+Criptat conform preferințelor dvs., nu necesită încărcare, ușor de utilizat și economic.', 'shopguard-3.jpg', 'shopguard', 'Sistem de protecție pentru rafturi');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (22, 'Imprimante pentru desktop seria GK42', 'Imprimanta cu transfer termic GK420t și imprimanta termică directă GC420d sunt ideale pentru situațiile în care este nevoie de controlul rețelei și avem un cost total de proprietate redus.', 'zebra-2.jpg', 'zebra', 'Viteză maximă de tipărire');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (24, 'Calculatoare mobile MC9300', 'este trei milioane de computere mobile din seria MC9000 eficientizează procesele din depozite și fabrici din întreaga lume. Dar clienții exigenți ai prezentului vor mai multe comenzi în fiecare zi, mai repede ca niciodată.
+Vă prezentăm un computer mobil care poate face față provocării - MC9300 este următoarea evoluție a celui mai bine vândut și cel mai de încredere computer mobil Android pentru companii, oferind platforma de afaceri Android și suportul final pentru aplicații.
+Indiferent dacă codurile de bare sunt la îndemână, pe rafturile de sus ale rafturilor sau undeva între ele, MC9300 le poate scana pe toate. Cu MC9300, lucrătorii dvs. pot elimina cu ușurință chiar și cele mai dificile urme.', 'zebra-4.jpg', 'zebra', NULL);
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (33, 'Imprimanta TDP-225', 'Sigură, rezistentă și inovatoare, imprimanta TDP-225 de 2 inci are un design compact și un mecanism de înaltă performanță, ceea ce o face ideală pentru multe aplicații din domeniul sănătății, al comerțului cu amănuntul și al etichetării activelor.
+TDP-225 imprimă la 6 inci pe secundă și este prima imprimantă compactă de desktop de 2 inci, la preț accesibil, care oferă un afișaj LCD opțional pentru urmărirea ușoară a procesului de imprimare.
+Alte caracteristici remarcabile includ un adaptor Ethernet intern cu cost redus pentru integrarea ușoară a rețelei și o tastatură opțională pentru imprimarea etichetelor în regim offline. De asemenea, este disponibil TDP-324 cu o rezoluție mare de imprimare de 300 dpi și o viteză de imprimare de 4 inci pe secundă.
+Cu elemente electronice avansate, seria TDP-225 oferă un procesor de 200 MHz, memorie Flash de 4 MB, SDRAM de 8 MB și un slot de expansiune microSD care extinde memoria flash până la 4 GB. Imprimanta acceptă emulații standard din industrie, inclusiv limbile Eltron® și Zebra®.
+Etichete pentru bijuterii
+Etichete pentru raft
+Etichete pentru produse
+Etichetarea probelor medicale
+Urmărirea sănătății pacienților
+Inventar și gestionarea activelor
+Listă de corespondență pentru un birou mic sau un birou la domiciliu
+Transport
+Marcarea fișierelor și folderelor', 'tsc-1.jpg', 'tsc', NULL);
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (34, 'Imprimanta TE200', '• Viteza de imprimare 152,4 mm (6 inci) pe secundă
+• Alimentare panglică 300 metri (984 in.) Pe mijloc de 25,4 mm (1 in.) (Acoperit în exterior)
+• Alimentare panglică de 72 până la 110 metri, pe mijloc de 12,7 mm (0,5 ") (acoperit în exterior)
+• Sursă internă de suport cu 127 mm (5 in) OD, suportul de suport extern opțional acceptă role de etichete OD de 214 mm (8,4 in) pe mijloc de 76,2 mm (3 in)
+• Motor de imprimare pentru chioșcuri
+• Procesor RISC de 400 MHz pe 32 biți cu 16 MB SDRAM, 8 MB bliț pentru TE200 / TE300 și 64 MB SDRAM, 128 MB bliț pentru TE210 / TE310
+• Fonturi scalabile internTrue Type
+TSPL-EZ încorporate, emulează limbile TPLE și TPLZ într-o cutie
+• Drivere Windows® gratuite și software de proiectare a etichetelor (disponibil pentru descărcare)
+• Calificat ENERGY STAR®', 'tsc-2.png', 'tsc', NULL);
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (35, 'Imprimanta CPX4', 'Viteze de imprimare rapide de până la 11,8 inci pe secundă
+Rezoluție înaltă 1200 x 1200 dpi
+Lățimi reglabile ale suportului de la 1 inci la 4,72 inci
+Software-ul de gestionare a culorilor TSC corespunde exact culorilor
+Suport universal media
+Interfețe USB și Ethernet Cartușe de mare capacitate rapide și eficiente
+', 'tsc-3.jpg', 'tsc', NULL);
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (9, 'Heron 3400', 'Heron 3400 - Scaner cu senzor de imagine cu cablu cu design inovator și unic, iluminare color și confirmare sonoră personalizată. Citește coduri de bare liniare (1D) și bidimensionale (2D).
+Scanerul de imagistică Heron HD3430 2D este disponibil în varianta grafit negru, alb sau argintiu pentru a evidenția liniile elegante ale corpului. Heron HD3430 oferă clienților posibilitatea de a personaliza scanerul în conformitate cu identitatea corporativă, combinând logo-ul imprimat pe partea superioară a carcasei, iluminarea vizuală a culorilor și coloana sonoră, personalizate la cererea clientului pentru a crește gradul de recunoaștere a mărcii.
+Scanerul Heron HD3430 oferă performanțe de neegalat la scanarea codului și imaginilor 2D. Dispozitivul utilizează tehnologia „Green Spot" pentru a confirma vizual o citire reușită.
+Confortul maxim al utilizatorului este obținut cu ajutorul iluminării albe și a vizibilității în 4 puncte care definesc cu exactitate zona de scanare. Cruciulița din centrul lunetei oferă o poziționare precisă, permițându-vă să citiți codul de bare dorit, chiar dacă este înconjurat de multe alte coduri.', 'datalogic-1.png', 'datalogic', 'Scaner cu senzor de imagine');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (10, 'QuickScan I Lite Qw2100', 'Cea mai bună scanare a codurilor greu de citit.
+Citirea de pe monitoare și smartphone-uri
+Mod automat și mod manual de înclinare
+Linie lungă de scanare
+Scanare de mare viteză
+Indicator luminos de confirmare a scanării
+"Green spot"
+Scanarea codurilor de bare
+', 'datalogic-2.png', 'datalogic', 'Scaner cu imagine liniară');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (11, 'Gryphon™ I 4200', 'Scanerele de coduri de bare sunt utilizate pentru urmărire și verificare din momentul colectării eșantionului în timpul procedurilor de analiză până la formarea rezultatelor finale ale testului.
+Scanerele Datalogic sunt fabricate folosind materiale antimicrobiene rezistente la tratamentul dezinfectant. Aceste dispozitive sunt special concepute pentru aplicații medicale în care soluțiile agresive de dezinfectare pot deteriora plasticul carcasei și unde protecția împotriva răspândirii infecției este importantă.
+
+Seria de scanere portabile de clasă premium 1D, Gryphon ™ I 4200 poate citi coduri de bare atât de la distanță apropiată cât și la depărtare, precum și coduri de densitate mare și rezoluție mică;
+Dispozitivele decodează codurile greu de citit, slab tastate și deteriorate de pe ecranele mobile, devenind astfel o alegere excelentă pentru orice aplicație.
+
+Ideal pentru scanarea manuală, Gryphon 4200 utilizează tehnologia Motionix ™ a Datalogic, care detectează mișcarea naturală a operatorului și comută automat scanerul în modul de citire automată.
+Localizatorul soft line view finder al Datalogic îl ajută pe operator să se focuseze cu ușurință pe un cod de bare, facilitând decodarea etichetei, reducând citirile accidentale atunci când mai multe coduri de bare sunt plasate unul lângă altul.
+
+Datorită tehnologiei fără fir Bluetooth® 4.0 (modele GBT) sau sistemului radio fără fir în bandă îngustă Datalogic STAR Cordless System ™ (modele GM), scanerele fără fir Gryphon 4200 oferă flexibilitate maximă în orice aplicație, oferind cea mai bună soluție tehnică.
+
+Una dintre cele mai importante inovații tehnice utilizate de scanerele fără fir Gryphon 4200 este reîncărcarea bateriei utilizând un sistem de încărcare inductivă, ceea ce mărește fiabilitatea, reduce costurile și exclude necesitatea curățării și întreținerii contactelor.
+
+Seria Gryphon 4200 are un model de carcasă „gata de dezinfectat" conceput pentru a rezista curățării de rutină cu dezinfectantul dur folosit în unitățile de sănătate.
+', 'datalogic-3.png', 'datalogic', 'Scanere portabile de clasă premium');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (12, 'Gryphon™ GPS4490', 'Gryphon ™ GPS4490 Imaging Matrix Scaner este un scaner 2D într-un design compact și elegant. Dimensiunea compactă a acestui dispozitiv îl face ideal pentru utilizare în spații de lucru restrânse. Suportul reglabil al scanerului vă permite să îl configurați pentru o operare ușoară și simplă.
+Suportul poate fi îndepărtat cu ușurință atunci când nu este necesar, scăzând și mai mult înălțimea scanerului. GPS4490 poate citi coduri de pe telefoane mobile, dispozitive PDA și ecranele computerului. Scannerul de prezentare GPS4400 este extrem de rezistent la mișcare, citește codurile de bare instantaneu și are performanțe excelente de decodare pentru codurile de bare slab tipărite sau deteriorate.
+Gryphon GPS4490 utilizează tehnologia de confirmare vizuală „Green Spot" a Datalogic și acceptă, de asemenea, funcții avansate, cum ar fi scanarea imaginilor / semnăturii și a documentelor, eliminând necesitatea de hardware POS suplimentar.
+', 'datalogic-4.jpg', 'datalogic', 'Imaging Matrix scaner');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (13, 'Magellan 3200VSi', 'Este proiectat cu tehnologie de imagistică pentru a oferi performanțe de citire orizontale îmbunătățite pentru zonele cu punct de vânzare de mare viteză, cu spațiu de lucru limitat.
+Tehnologia de imagistică oferă performanțe excepționale atunci când scanează coduri de bare dificil de citit, cum ar fi codurile de bare trunchiate (scurte), deteriorate, slab tipărite și codurile GS1 DataBar și pot scana atât etichete de coduri de bare liniare (1D), cât și bidimensionale (2D).
+Magellan 3200VSi utilizează atât tehnici de scanare raster, cât și de prezentare, pentru a asigura productivitate și confort maxim. O caracteristică unică a dispozitivului este interfața cititorului de carduri micro-SD, care ajută la programarea gestionării, actualizării și întreținerii dispozitivului. Majoritatea funcțiilor Magellan 3300VSi sunt furnizate de software, facilitând adăugarea de funcții noi chiar și după instalarea scanerului.', 'datalogic-5.png', 'datalogic', 'Scaner coduri de bare');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (15, 'Magellan 3450VSi', 'Scanerul Magellan ™ 3450VSi oferă cele mai bune performanțe de scanare a codurilor 1D și 2D, fiabilitate și versatilitate excepționale într-un pachet compact.
+Scanerul Magellan 3450VSi împărtășește caracteristicile familiei de scanere Magellan care le-au făcut foarte populare, inclusiv decodarea fără sudură a codurilor de bare liniare (1D) și bidimensionale (2D), baza electronică de ultimă generație (complet semiconductoare), fără piese în mișcare, fără oglinzi vibrante și fără modul laser; scanarea imaginilor, dimensiunea compactă și accesibilitatea la actualizări de software și modificări de configurație.
+Magellan 3450VSi beneficiază, de asemenea, de tehnologie avansată de imagistică, iluminare din spate, procesoare puternice, software Datalogic - tot ceea au scanerele multi-plane Magellan 9800i și 9400i Datalogic de pe piață.
+Îmbunătățirile hardware și software au redus semnificativ luminozitatea, îmbunătățind în același timp randamentul, adâncimea de câmp și viteza de scanare. Iluminarea de fundal, moale, discretă, reduce luminozitatea luminii directe și indirecte pe care o vede utilizatorul, făcând activitatea confortabilă și productivă pe tot parcursul zilei de lucru.
+Scanerul Magellan 3450VSi are o zonă de scanare mai mare, mai intuitivă, pentru o baleiere convenabilă și eficientă a fasciculului de scanare.', 'datalogic-7.png', 'datalogic', 'Scaner monoplan');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (16, 'Magellan™ 9300i', 'Scanerul Magellan 9300i și Scanner / Scale sunt o nouă clasă de scanere de coduri de bare de înaltă performanță. Cu scanerele cu matrice de puncte pentru imagini orizontale și verticale, scanerele 9300i citesc atât coduri de bare liniare (1D), cât și bidimensionale (2D) fără a fi nevoie să orienteze elementele în raport cu scanerul.
+Cu înălțimea tradițională a corpului și ferestrele mari de scanare orizontale și verticale, Magellan 9300i este ideal pentru sistemele de auto-verificare POS, precum și pentru sistemele POS cu ecran tactil și imprimante, menținând în același timp poziția confortabilă a casierului în timp ce stă în picioare.
+În plus, Magellan 9300i poate fi echipat cu un alt Customer Service Scanner (CSS), care permite clienților să scaneze independent codurile de bare ale programului de fidelizare atât de pe ecranele telefonului mobil, cât și de pe cupoanele de hârtie, în timp ce casierul continuă să scaneze mărfurile în paralel.
+În urma acestei divizări, timpul total al tranzacției este redus. Funcționalitatea și opțiunile inovatoare, cum ar fi tehnologia ScaleSentry Weighing Loss Reduction, platforma de cântărire AllWeighs și suportul pentru sistemele EAS majore ajută retailerii să reducă pierderile în timpul plății.', 'datalogic-8.png', 'datalogic', 'Scaner Matrix cu tehnologie de citire a imaginilor');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (17, 'Magellan 9800i', 'Scanerul de imagini Magellan™ 9800i are o înălțime de scanare redusă și citește codul liniar (1D), bidimensional (2D) și Digimarc®
+Scanerul Magellan 9800i utilizează tehnologie de imagistică de ultimă generație, design rezistent și debit maxim pentru codurile de bare liniare (1D) și bidimensionale (2D).
+Acest scaner este primul scaner din lume pentru casele de marcat din magazinele alimentare și este complet echipat cu tehnologie de imagine digitală de înaltă performanță.
+Designul neobișnuit, cu o secțiune de scanare redusă îmbunătățește ergonomia scanerului, oferind mai multă libertate pentru a găzdui ecrane pentru sisteme POS sau sisteme de autoservire, terminale POS și imprimante de recepție.
+Difuzorul montat în centru permite utilizarea fișierelor WAV personalizate pentru a confirma o scanare reușită. Fereastra largă, orizontală, a scanerului este așezată în așa fel încât casierilor să le fie comod să lucreze atât așezați, cât și în picioare. Funcția opțională Top Down Reader (TDR) asigură scanarea continuă a articolelor cu codul de bare situat în partea de sus a ambalajului.
+Scanner-ul Magellan 9800i TDR are, de asemenea, un alt scaner de imagini care este îndreptat spre partea de scanare a clientului pentru a scana cu ușurință cupoane mobile, cupoane de hârtie și carduri de loialitate pe cont propriu.', 'datalogic-9.jpg', 'datalogic', 'Scaner cu tehnologie imagistică');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (23, 'Calculatoare mobile MC3300', 'Seria RFID Zebra MC3300 este o nouă linie de calculatoare integrate UHF și RAIN RFID, care sunt construite în baza tehnologiilor de identificare a frecvenței radio (RFID) și în baza platformei mobile Android, considerată una dintre platformele viitorului.
+Sunt disponibile patru modele pentru a vă satisface nevoile: MC3330R / MC3330xR pentru citirea etichetelor RFID și a codurilor de bare din gama standard din depozitele magazinelor, hotelurilor, unităților medicale și furnizorilor mari, precum și MC3390R / MC3390xR pentru colectarea pe termen lung a datelor din industria ușoară, a depozitelor mari și a furnizorilor din producție. Toate modelele din seria MC3300 RFID sunt echipate cu funcții inovatoare care ajută la creșterea productivității și la creșterea profiturilor.', 'zebra-3.jpg', 'zebra', 'Calculare eficientă RFID și platformă ANDROID puternică');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (25, 'Imprimante industriale ZT600', 'Imprimantele din seria ZT600 depășesc generația anterioară a imprimantelor din seria Xi și combină durabilitate sporită, performanță excepțională, ușurință în utilizare și capacitate de actualizare. Aceste dispozitive de nouă generație sunt concepute pentru a răspunde nevoilor afacerilor de schimbare rapidă.
+Astfel, imprimantele industriale ZT600 vă permit să răspundeți rapid cerințelor tot mai mari ale liniei de producție, să faceți față eficient sarcinilor într-un mediu cu o complexitate a operațiunilor din ce în ce mai mare, să integrați sisteme și să controlați costurile de investiții în timp.', 'zebra-5.jpg', 'zebra', 'Abordare inteligentă și capacități puternice');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (26, 'KH II 800 Pro', 'Sistemul computerizat modern vă permite să fiți cât mai flexibil posibil. Procesorul Intel® oferă o performanță maximă, iar sistemul Quad Core este puternic și are o memorie mare.
+Cântarul de masă KH II 800 Pro îndeplinește toate sarcinile necesare în sectorul comerțului cu amănuntul: cântărire, etichetare, publicitate, funcții de checkout. Transmiteți conținut promoțional, informații despre produse și vânzări încrucișate pe un ecran de 12.1" fără a-i crea probleme cumpărătorului.
+În combinație cu sertarul de numerar, cântarele de vânzare cu amănuntul pentru magazin vor deveni un sistem complet pentru casa de marcat.
+Platforma computerizată deschisă a cântarului electronic asigură o productivitate ridicată: o cantitate mare de memorie RAM permite funcții noi și cerințe individuale. Experimentați toate avantajeledesignului ergonomic. Cu imprimanta Easy Load, încărcarea rolelor de etichete durează câteva secunde. Înlocuirea consumabilului se face fără instrumente.', 'bizebra-1.jpg', 'bizebra', 'Cântar de comerț cu calculator');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (27, 'XC II 800 Pro', 'Sistem computerizat modern într-un design compact. Mai multe performanțe cu un procesor Intel® Quad Core puternic și mai multă memorie RAM.
+Cântarele comerciale Bizerba XC II 800 Pro îndeplinesc toate sarcinile necesare în sectorul comerțului cu amănuntul: cântărire, etichetare, publicitate, funcții de checkout. Difuzați conținut promoțional, informații despre produse și vânzări încrucișate pe un ecran impecabil pentru clienți. În combinație cu sertarul de numerar, cântarele de vânzare cu amănuntul pentru magazin vor deveni un sistem complet al casei de marcat.
+Cântarele comerciale au o imprimantă 3-în-1 unică: un dispozitiv tipărește chitanțe, etichete standard și etichete linerless. Platforma computerizată deschisă a cântarului electronic XC II 800 Pro asigură o productivitate ridicată: o cantitate mare de memorie RAM permite funcții noi și cerințe individuale.
+Domenii de aplicare:
+Deservire, Autodeservire
+Marcarea prețurilor / ambalarea produselor
+Posibilități multimedia (conținut publicitar / vânzare încrucișată)', 'bizebra-2.jpg', 'bizebra', 'Cântar de comerț cu computer');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (28, 'Validoline GSP H', 'Validoline GSP H - casă de marcat manuală pentru tăiere unghiulară manuală.
+Feliatorul manual folosește gravitația pentru a funcționa. Datorită poziției de înclinare ergonomică și a preciziei numite Bizerba, produsele, chiar și cele mai grele pot fi feliate cu ușurință. Acest feliator se remarcă printr-o varietatea de modele. Feliator individual și puternic pentru felierea manuală a diferitelor tipuri de produse. Mașina de feliat portabilă, premium stabilește standarde globale pentru ergonomie, igienă și siguranță.
+Inima mașinii este acționarea puternică a cuțitului.
+GSP H poate avea o suprafață Ceraclean®, care asigură nu numai curățarea ușoară a feliatorului, ci și permite amplasarea facilă a produsului la cuțit.
+Domeniu de utilizare: se potrivește mai ales ca dispozitiv versatil pentru bucătării și săli de mese, poate fi folosit și la tejghea.
+Principalele avantaje:
+Pentru fiecare aplicare poate fi selectat un design corespunzător. Jgheabul de scurgere al sistemului de tăiere protejează împotriva scurgerilor de lichide și ajută la menținerea curată a zonei de lucru.
+Suprafață igienică Ceraclean® (opțional)
+Pachetul de siguranță energetică (opțional) oferă un comutator automat al cuțitului în modul pornire / oprire - prin intermediul dispozitivului de reglare a grosimii feliei.
+Igiena. Ascuțitoarele Bizerba sunt unități separate. Prin urmare, un nivel ridicat de igienă este menținut chiar și în timpul felierii. La fel ca alte module plug-in, aceste dispozitive sunt, de asemenea, sigure pentru mașina de spălat vase.
+Designul inteligent, selecția atentă a materialelor din care este confecționat tăietorul și soluțiile inteligente, cum ar fi un dispozitiv de ridicare pentru întreaga mașină, asigură o curățare manuală rapidă și ușoară.
+Inofensivitatea.
+Datorită pachetului opțional de siguranță „Iluminare", utilizatorii învață despre modurile de funcționare ale mașinii de la prima cunoștință. Astfel, riscul de rănire a lucrătorilor este redus.
+', 'bizebra-3.jpg', 'bizebra', 'Casă de marcat manuală pentru tăiere unghiulară manuală');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (29, 'VSI', 'Feliator automat, igienic, cu control al greutății încorporat, ideal pentru prelucrarea alimentelor, comerț cu amănuntul și utilizarea în fabrică. Modelul de masă al tăietorului VSI este ideal pentru lucrul pe tejghele. Feliatorul impresionează prin performanțele sale ridicate, cu un consum minim de energie, datorită sistemului inteligent Emotion®. Datorită funcției de control integrat, greutatea țintă este atinsă chiar și atunci când feliați produse naturale. Pentru o funcționare modernă și sigură, este echipat cu un ecran tactil intuitiv.
+Domeniul de aplicare:
+Feliatorul este potrivit pentru transferul manual al produsului tăiat în ambalaj sau pe o farfurie Porțiile pot fi, de asemenea, tăiate direct pe o farfurie.
+Principalele avantaje: Cântar încorporate pentru controlul și optimizarea greutății.
+Design igienic pentru curățarea ușoară a carcasei. Întreținere ușoară și comodă, piese detașabile pot fi îndepărtate cu ușurință fără instrumente. Forma carcasei previne acumularea de reziduuri de produse sau lichide, astfel încât suprafața de lucru nu este contaminată.
+Performanță ridicată cu un consum minim de energie datorită sistemului Emotion®
+Afișaj cu ecran tactil și interfață de utilizator personalizată cu funcție de alertă (pentru întreținere preventivă sau în caz de erori de funcționare) și funcție de monitorizare (pentru istoricul tuturor acțiunilor și gradul de utilizare a slicerului), precum și funcții de e-Service de la Bizerba Service.
+Datorită software-ului încorporat, clientul poate opera cu datele în timp real.
+Controale intuitive: lucrul cu feliatorul este ușor – nu necesită prea mult timp pentru învățare. Sistemul de control este personalizat, cu un bloc de memorie SKU - un avantaj distinct al VSI și soluția perfectă pentru automatizarea fluxului de lucru. Datele despre produs pot fi completate cu fotografii.
+Întreținere și curățare rapidă: VSI respectă pe deplin cerințele ridicate de igienă conform NSF Ansi 8/2012. În același timp, se acordă o atenție specială ergonomiei în muncă și curățeniei!
+', 'bizebra-4.jpg', 'bizebra', 'Feliator vertical de tăiat');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (30, 'BSP GSP HD', 'Feliatoarea automată, premium, conică, stabilește standarde mondiale în materie de ergonomie, igienă, siguranță și eficiență energetică.
+Feliatorul automat folosește gravitația pentru a funcționa. Datorită poziției de înclinare ergonomică și a preciei denumite Bizerba, produsele, chiar și cele mai grele, pot fi feliate cu ușurință. Indiferent de opțiunea pe care o alegeți, feliatoarele vă vor permite să lucrați fără stres și să economisiți timp pentru comunicarea cu clienții de la ghișeu.
+Avantajul GSP HD este varietatea largă de opțiuni de tăiere. Acest lucru vă permite să tăiați diferite tipuri de produse în modul manual și automat.
+Inima tăietorului este dispozitivul puternic și inteligent - dispozitivul de cuțit Emotion®. Datorită acestuia, se economisește energie, nivelul de zgomot din zona de vânzare este minimizat și mașina practic nu se încălzește(un factor important pentru conservarea pe termen lung a prospețimii produsului).
+GSP HD este disponibil cu suprafața Ceraclean®, care asigură nu numai curățarea ușoară a mașinii de tăiat, ci și o relație simplă între produs și cuțit.
+Particularitatea mașinii de feliat sub unghi este posibilitatea integrării unui cântar. Greutatea este afișată pe ecranul tactil, care este, de asemenea, utilizat pentru a controla viteza cuțitului.
+Domeniu de utilizare: Potrivit în mod deosebit ca dispozitiv versatil pentru bucătării și săli de mese, poate fi folosit și la tejghea. Timpul de lucru poate fi economisit semnificativ prin procese automatizate, iar GSP HD devine o alternativă pentru felierea manuală.
+Avantaje comune: pentru fiecare aplicație este disponibil un design personalizat Emotion®, eficient din punct de vedere energetic, cu un nivel de zgomot redus, care previne, de asemenea, încălzirea zonei de aplicare a produsului.
+Jgheabul de scurgere al sistemului de tăiere și protecția împotriva scurgerii de lichide ajută la menținerea curată a zonei de lucru. Datorită suprafeței igienice Ceraclean® (opțional), toate părțile detașabile ale feliatorului sunt sigure pentru mașina de spălat vase.
+Pachetul de siguranță energetică (opțional) oferă un comutator automat al cuțitului în modul pornire / oprire - prin intermediul dispozitivului de reglare a grosimii feliei.
+Igiena: Ascuțitoarele Bizerba sunt unități separate. Prin urmare, igiena este menținut chiar și în timpul felierii. La fel ca alte module plug-in, aceste dispozitive sunt, de asemenea, sigure pentru mașina de spălat vase.
+Designul inteligent, selecția atentă a materialelor pentru tăietor și soluțiile inteligente, cum ar fi un dispozitiv de ridicare pentru întreaga mașină, asigură o curățare manuală rapidă și ușoară.
+Ergonomie: funcționarea manuală economisește energie și permite lucrătorului de la ghișeu să se concentreze mai mult pe comunicarea cu clienții.', 'bizebra-5.jpg', 'bizebra', 'Mașină automată de tăiat');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (31, 'A560', 'Profitați la maximum de feliatorul automat A560. Feliați, cântăriți și porționați o gamă largă de produse la greutatea țintă cu un singur dispozitiv. Creșteți-vă profitul cu fiecare felie tăiată.
+Feliatorul A560 satisface nevoile marilor unități de catering, companiilor de catering, supermarketurilor, măcelarilor și industriilor alimentare industriale. Schimbările rapide de care este capabil produsul, precum și timpul minim de schimbare fac ca producția dvs. să fie flexibilă și economică.
+Datorită funcțiilor sale unice de tăiere și cântărire integrate, feliatorul profesionist reduce excesul de greutate cu până la 15%. Indiferent dacă lucrați cu produse turnate sau produse în formă naturală, veți obține porțiuni decupate, decorative în funcție de greutatea necesară: stivă, ventilator cu offset.
+Designul compact și construcția mobilă permit ca feliatorul A560 să fie repoziționat din zona de producție în zona de curățare.
+Înregistrați date de producție cu software industrial _statistics. BRAIN este soluția ideală pentru monitorizarea, documentarea și evaluarea proceselor de producție.
+Domeniu de aplicare:
+Slicer pentru tăierea produselor în volume mici în modul automat.
+Întreprinderi de prelucrare a cărnii:
+Tăierea cărnii și a produselor de băcănie în forme regulate și neregulate.
+Felierea porționată a produselor;
+Companii de producție și ambalare a brânzeturilor:
+Producție convenabilă - feliere în linie
+Felierea brânzei cu o pierdere minimală de produs;
+Centre de distribuție:
+Felierea cărnii și a brânzei
+Porționarea produselor
+Companii de catering:
+Tăierea unor loturi mici de produse într-o gamă largă
+Prepararea aperitivelor reci: farfurii cu carne și brânză pentru o servire frumoasă
+Principalele avantaje:
+Felierea, ventilarea sau stivuirea tuturor tipurilor mezeluri și brânzeturi fără congelare prealabilă Producție eficientă datorită funcționării ușoare, designului compact și schimbărilor rapide ale produsului.
+Igiena: contact minim cu produsul tăiat datorită modului automat de funcționare, care exclude formarea bacteriilor.
+Precizie perfectă în ajustarea greutății țintă pe baza schimbărilor de greutate ale fiecărei felii Raportarea simplă a parametrilor de producție și a performanței liniei utilizând _statistics. BRAIN
+Protecție ridicată datorită construcției sigure din oțel inoxidabil: ideală pentru lucrări cu volum mare.', 'bizebra-6.jpg', 'bizebra', 'Mașină industrială de tăiat');
+INSERT INTO public.products (id, name, description, imgurl, type, short_desc) VALUES (32, 'A660', 'Feliator complet automat, cu cântărire încorporată a porțiunilor și a fiecărei felii. Feliatorul are un suport automat pentru produs, un design sigur care se întreține ușor. A660 este ideal pentru uz industrial.
+Feliatorul automat, unic în clasa sa, cântărește porțiile și fiecare felie feliată. Bizerba A660 oferă flexibilitate și eficiență maximă și taie decorativ orice produs conform greutății dorite.
+Reziduurile produsului tăiat sunt minime. Excesul de greutate este redus la 15%. Acest lucru este posibil datorită procesului unic de cântărire în timpul tăierii. Datorită blocării automate și a capacității de a lucra cu produse cu lungimea de până la 900 mm, feliatorul este deosebit de comod pentru lucrul cu produse turnate. Mașina de tăiat A660 asigură un randament crescut.
+Domeniul de utilizare: Slicer cu design sigur pentru utilizare industrială
+Întreprinderi de prelucrare a cărnii:
+Tăierea cărnii și a mezelurilor în forme regulate și neregulate;
+Porționarea produselor feliate;
+Întreprinderi de producere și ambalare a brânzeturilor:
+Producție convenabilă - feliere în linie
+Felierea cașcavalului cu o pierdere minimală a produsului;
+Centre de distribuție:
+Porționarea produselor din carne și a brânzeturilor;
+Porționarea produselor
+Companii de catering:
+Tăierea unor loturi mici de produse într-o gamă largă
+Pregătirea gustările reci: farfurii cu carne și brânză pentru o servire frumoasă.', 'bizebra-7.jpg', 'bizebra', 'Mașină industrială de tăiat');
+
+
+--
+-- TOC entry 3056 (class 0 OID 24691)
+-- Dependencies: 201
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.users (id, username, password) VALUES (11, 'admin', '$2b$05$FgeqHAXs9MiF0T1jQn0SuO7y1t6D4tJ0KwjZbsH6JQIptpZ37jBhC');
+
+
+--
+-- TOC entry 3068 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: news_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.news_id_seq', 45, true);
+
+
+--
+-- TOC entry 3069 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: product_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.product_types_id_seq', 15, true);
+
+
+--
+-- TOC entry 3070 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.products_id_seq', 60, true);
+
+
+--
+-- TOC entry 3071 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 11, true);
+
+
+--
+-- TOC entry 2923 (class 2606 OID 24661)
+-- Name: news news_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.news
+    ADD CONSTRAINT news_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2929 (class 2606 OID 32891)
+-- Name: product_types product_types_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.product_types
+    ADD CONSTRAINT product_types_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2925 (class 2606 OID 24687)
+-- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2927 (class 2606 OID 24699)
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+-- Completed on 2021-06-02 09:17:55 EEST
+
+--
+-- PostgreSQL database dump complete
+--
+
