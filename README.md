@@ -6,5 +6,5 @@ Database : PostgreSQL
 
 Start project :
 1) npm install
-2) cd client && npm install
-3) cd .. && npm run start
+2) cd client && npm install && npm run build
+3) cd .. && npm run server
