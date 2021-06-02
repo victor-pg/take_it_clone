@@ -46,7 +46,7 @@ const DashboardNewsList = () => {
     const customStyles = {
         content: {
             height: '550px',
-            padding: '20px 0 0 0'
+            padding: '40px 0 0 0'
         }
     };
 
@@ -56,7 +56,7 @@ const DashboardNewsList = () => {
                 const { title, subtitle, text } = res.data[0];
                 setTitle(title); setSubtitle(subtitle); setText(text);
             })
-            .catch(err => console.log('Update error ' + err))
+            .catch(err => console.log(''))
     }
 
     const updateArticleContent = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect, HashRouter } from 'react-router-dom';
+import { Switch, Route, Redirect, HashRouter,BrowserRouter } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import MainPage from './Components/MainPage/MainPage'
 import CatalogPage from './Components/CatalogPage/CatalogPage';
@@ -19,14 +19,14 @@ const MainContainer = () => {
 }
 const Routes = () => {
     return (
-        <HashRouter>
+        <BrowserRouter>
             <Switch>
                 <Route path="/catalog" exact component={CatalogPage} />
                 <Route path="/details/:id" exact component={({ match }) => <CatalogItemDetails id={match.params.id} />} />
                 <Route path="/takeit-admin" exact component={Dashboard} />
                 <Route path="/" component={MainContainer} />
             </Switch>
-        </HashRouter>
+        </BrowserRouter>
     );
 }
 

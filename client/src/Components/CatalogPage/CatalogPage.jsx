@@ -62,7 +62,15 @@ const CatalogPage = () => {
               <hr className="catalog-delimitator" />
               <ul>
                 {productTypes.map(({ type }) => {
-                  return (
+                  if(type.length<=3) {  
+                  return(
+                    <li className="text-uppercase">
+                      <ScrollLink to={type} spy={true} smooth={true}>
+                        {type}
+                      </ScrollLink>
+                    </li>
+                  )
+                   }else return (
                     <li className="text-capitalize">
                       <ScrollLink to={type} spy={true} smooth={true}>
                         {type}

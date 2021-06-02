@@ -37,7 +37,7 @@ const DashboardList = () => {
   const customStyles = {
     content: {
       height: "550px",
-      padding: "20px 0 0 0",
+      padding: '40px 0 0 0'
     },
   };
 

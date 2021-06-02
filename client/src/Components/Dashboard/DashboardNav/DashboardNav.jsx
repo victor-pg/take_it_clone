@@ -61,14 +61,15 @@ const DashboardNav = ({ handleLogout }) => {
 
     const customNewsStyles = {
         content: {
-            height: '500px'
+            height: '500px',
+            padding: '40px 0 0 0'
         }
     };
 
     const customProductsStyles = {
         content: {
             height: '550px',
-            padding: '20px 0 0 0'
+            padding: '40px 0 0 0'
         }
     };
 

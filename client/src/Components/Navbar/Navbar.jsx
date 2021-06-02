@@ -55,7 +55,7 @@ const Navbar = () => {
                     <ul className="nav-items">
                         <li><ScrollLink to="services" spy={true} smooth={true}>Serviciile noastre</ScrollLink></li>
                         <li><ScrollLink to="clients" spy={true} smooth={true}>Clienții noștri</ScrollLink></li>
-                        <li><ScrollLink to="news" spy={true} smooth={true}>Noutăți</ScrollLink></li>
+                        {/* <li><ScrollLink to="news" spy={true} smooth={true}>Noutăți</ScrollLink></li> */}
                         <li><ScrollLink to="about" spy={true} smooth={true}>Despre</ScrollLink></li>
                         <li><ScrollLink to="partners" spy={true} smooth={true}>Parteneri</ScrollLink></li>
                         <li><ScrollLink to="footer" spy={true} smooth={true}>Contacte</ScrollLink></li>

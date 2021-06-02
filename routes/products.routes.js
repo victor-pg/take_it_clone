@@ -38,7 +38,7 @@ router.delete('/products/delete/:id',async(req,res)=>{
         else fileName=result.rows[0].imgurl;
     })
 
-    let fileDir = path.join(__dirname, '../client/public/img/products/');
+    let fileDir = path.join(__dirname, '../client/build/img/products/');
 
     await pool.query(deleteProduct,(error,result)=>{
         if(error) res.json({message:'Nu s-a putut șterge produsul'})

@@ -51,7 +51,7 @@ router.delete('/news/delete/:id',async(req,res)=>{
     })
 
 
-    let fileDir = path.join(__dirname, '../client/public/img/news/');
+    let fileDir = path.join(__dirname, '../client/build/img/news/');
 
     await pool.query(deleteArticle,(error,result)=>{
         if(error) res.json({message:'Nu s-a putut șterge articolul'})
