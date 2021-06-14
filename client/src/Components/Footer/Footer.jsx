@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaFacebook } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
+import {FormattedMessage} from 'react-intl';
 
 import './Footer.scss';
 
@@ -9,7 +10,7 @@ const Footer = () => {
         <footer id="footer">
             <div className="comunicare">
                 <div className="container">
-                    <p>SUNTEM DESCHIȘI PENTRU COMUNICARE</p>
+                    <p><FormattedMessage id="contacts-title"/></p>
                     <a href="https://www.facebook.com/takeit.md" target="_blank" rel="noreferrer">
                         Scrieți-ne
                     </a>
@@ -21,7 +22,7 @@ const Footer = () => {
                 </div>
                 <div className="number">
                     <div className="container">
-                        <p className="footer-title">SUNTEM DESCHIȘI PENTRU COMUNICARE</p>
+                        <p className="footer-title"><FormattedMessage id="contacts-title"/></p>
                         <p className="footer-email">sales@takeit.md</p>
                         <p className="footer-number">+373 79 33 99 33</p>
                         <div className="footer-icons">

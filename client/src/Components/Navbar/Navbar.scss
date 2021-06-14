@@ -120,6 +120,12 @@ nav {
         text-decoration: none;
     }
 }
+.lang{
+    color:white;
+    font-family: "Roboto", sans-serif ;
+    font-size: 16px;
+    cursor: pointer;
+}
 @media screen and (max-width: 980px){
     .modal{
         width:100% !important;

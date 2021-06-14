@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Link as ScrollLink } from 'react-scroll'
+import { Link as ScrollLink } from 'react-scroll';
+import {FormattedMessage} from 'react-intl';
 // import ModalWindow from '../ModalWindow/ModalWindow';
 
 import './Navbar.scss';
@@ -11,6 +12,14 @@ const Navbar = () => {
 
     const changeNavState = () => {
         setShowNav(!showNav);
+    }
+    const changeLangToRo=()=>{
+        localStorage.setItem('language',JSON.stringify('ro'));
+        window.location.reload();
+    }
+    const changeLangToRu=()=>{
+        localStorage.setItem('language',JSON.stringify('ru'));
+        window.location.reload();
     }
     // const changeModalState = () => {
     //     setShowModal(!showModal);
@@ -53,13 +62,13 @@ const Navbar = () => {
                 </div>
                 <div className="block-with-nav-items">
                     <ul className="nav-items">
-                        <li><ScrollLink to="services" spy={true} smooth={true}>Serviciile noastre</ScrollLink></li>
-                        <li><ScrollLink to="clients" spy={true} smooth={true}>Clienții noștri</ScrollLink></li>
+                        <li><ScrollLink to="services" spy={true} smooth={true}><FormattedMessage id="navbar-services"/></ScrollLink></li>
+                        <li><ScrollLink to="clients" spy={true} smooth={true}><FormattedMessage id="navbar-clients"/></ScrollLink></li>
                         {/* <li><ScrollLink to="news" spy={true} smooth={true}>Noutăți</ScrollLink></li> */}
-                        <li><ScrollLink to="about" spy={true} smooth={true}>Despre</ScrollLink></li>
-                        <li><ScrollLink to="partners" spy={true} smooth={true}>Parteneri</ScrollLink></li>
-                        <li><ScrollLink to="footer" spy={true} smooth={true}>Contacte</ScrollLink></li>
-                        <li><Link to="/catalog" className="catalog-link">Catalog</Link></li>
+                        <li><ScrollLink to="about" spy={true} smooth={true}><FormattedMessage id="navbar-about" /></ScrollLink></li>
+                        <li><ScrollLink to="partners" spy={true} smooth={true}><FormattedMessage id="navbar-partners"/></ScrollLink></li>
+                        <li><ScrollLink to="footer" spy={true} smooth={true}><FormattedMessage id="navbar-contacts"/></ScrollLink></li>
+                        <li><Link to="/catalog" className="catalog-link"><FormattedMessage id="navbar-catalog"/></Link></li>
                         {/* <li><FaFacebook className="icon-size" /></li> */}
                         {/* <li><FaInstagram className="icon-size" /></li> */}
                         <li>
@@ -68,11 +77,17 @@ const Navbar = () => {
                             >
                                 Sunați-ne
                             </button> */}
-                            <a href="tel:+37330001015" className="submit-button">Sunați-ne</a>
+                            <a href="tel:+37330001015" className="submit-button"><FormattedMessage id="navbar-call"/></a>
                             {/* {
                                 showModal ? <ModalWindow htmlContent={modalHtmlContent} showCloseButton={false} />
                                     : null
                             } */}
+                        </li>
+                        <li onClick={changeLangToRo}>
+                            <span className="lang lang-ro">Ro</span>
+                        </li>
+                        <li onClick={changeLangToRu}>
+                            <span className="lang lang-ru">Ru</span>
                         </li>
                     </ul>
                 </div>

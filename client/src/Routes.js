@@ -19,14 +19,14 @@ const MainContainer = () => {
 }
 const Routes = () => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Switch>
                 <Route path="/catalog" exact component={CatalogPage} />
                 <Route path="/details/:id" exact component={({ match }) => <CatalogItemDetails id={match.params.id} />} />
                 <Route path="/takeit-admin" exact component={Dashboard} />
                 <Route path="/" component={MainContainer} />
             </Switch>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 
