@@ -3,6 +3,7 @@ import axios from "axios";
 import DashboardItem from "../DashboardItem/DashboardItem";
 import ModalWindow from "../../ModalWindow/ModalWindow";
 import { Row, Container } from "react-bootstrap";
+import {FormattedMessage} from 'react-intl';
 
 import "./DashboardList.scss";
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,10 +22,17 @@ const DashboardList = () => {
   const [newImage, setNewImage] = useState("");
 
   useEffect(() => {
-    axios
+    if(JSON.parse(localStorage.getItem('language'))==='ro'){
+      axios
       .get("/api/products")
       .then((res) => setData(res.data))
       .catch((error) => console.log(error.message));
+    }else if(JSON.parse(localStorage.getItem('language'))==='ru'){
+      axios
+      .get("/api/products/ru")
+      .then((res) => setData(res.data))
+      .catch((error) => console.log(error.message));
+    }
     getCurrentProduct(currentId);
     getProductTypes();
   }, [currentId]);
@@ -168,7 +176,7 @@ const DashboardList = () => {
 
   return (
     <div id="dashboard-catalog">
-      <h1 className="m-4 text-center">Catalog</h1>
+      <h1 className="m-4 text-center"><FormattedMessage id="catalog"/></h1>
 
       {productTypes.map(({ type }) => {
         return (

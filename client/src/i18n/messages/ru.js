@@ -4,7 +4,7 @@ const ru = {
     [LOCALES.RU]: {
         'navbar-services': 'Наши услуги',
         'navbar-clients': 'Наши клиенты',
-        'navbar-about': 'Про нас',
+        'navbar-about': 'О нас',
         'navbar-partners': 'Партнёры',
         'navbar-contacts': 'Контакты',
         'navbar-catalog': 'Каталог',
@@ -43,6 +43,28 @@ const ru = {
         'partners-subtitle':'Take IT - официальный импортер на территории Молдовы, партнер надежных производителей оборудования известных мировых брендов.',
 
         'contacts-title':'МЫ ВСЕГДА ГОТОВЫ К ОБЩЕНИЮ',
+
+        'back-button':'Назад',
+        'details-button':'Подробнее',
+
+        'catalog-title':'Наши партнеры — известные мировые бренды, сочетающие функциональность и стильный дизайн для вашего бизнеса. Мы очень гордимся нашим сотрудничеством!',
+        'catalog-contacts-info':'Напишите нам: sales@takeit.md',
+        'catalog-footer-contacts-text':'СВЯЖИТЕСЬ С НАМИ:',
+
+        'username':'Имя пользователя',
+        'password':'Пароль',
+
+        'news':'Новости',
+        'catalog':'Каталог',
+        'actions':'Действия',
+
+        'news-add':'Добавить новую статью',
+        'product-add':'Добавить новый продукт',
+        'type-add':'Добавить новый тип',
+        'type-delete':'Удалить определённый тип',
+
+        'modify-button':'Изменить',
+        'delete-button':'Удалить'
     }
 }
 

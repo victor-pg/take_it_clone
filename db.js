@@ -27,15 +27,19 @@ const createProductsTable = `CREATE TABLE IF NOT EXISTS products (
     description text NOT NULL,
     imgUrl varchar(450) NOT NULL ,
     type varchar(450) NOT NULL,
-    short_desc varchar(250)
+    short_desc varchar(250),
+    name_ru varchar(450) NOT NULL,
+    description_ru text NOT NULL,
+    short_desc_ru varchar(250)
     )`;
+
 
 pool.query(createProductsTable, (err, res) => {
     if (err) console.log("Cannot create products table " + err);
     if (res) console.log("Table products created successfully " + res);
 })
 
-const createUsersTable=` CREATE TABLE IF NOT EXISTS users(
+const createUsersTable = ` CREATE TABLE IF NOT EXISTS users(
     id SERIAL PRIMARY KEY NOT NULL,
     username varchar(100) NOT NULL,
     password varchar(450) NOT NULL

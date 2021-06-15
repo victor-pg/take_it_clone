@@ -42,7 +42,29 @@ const ro = {
         'partners-title':'Partenerii noștri',
         'partners-subtitle':'Take IT - importator oficial pe teritoriul Republicii Moldova, partener de incredere a producătorilor de echipamente cu mărci de renume mondial.',
 
-        'contacts-title':'SUNTEM DESCHIȘI PENTRU COMUNICARE'
+        'contacts-title':'SUNTEM DESCHIȘI PENTRU COMUNICARE',
+
+        'back-button':'Înapoi',
+        'details-button':'Detalii',
+
+        'catalog-title':'Partenerii noștri sunt branduri cu renume internațional, care combină funcționalitatea și designul elegant pentru afacerea dvs. Suntem foarte mândri de cooperarea noastră!',
+        'catalog-contacts-info':'Contactați-ne: sales@takeit.md',
+        'catalog-footer-contacts-text':'СONTACTAȚI-NE:',
+
+        'username':'Nume de utilizator',
+        'password':'Parolă',
+
+        'news':'Noutăți',
+        'catalog':'Catalog',
+        'actions':'Acțiuni',
+
+        'news-add':'Adaugă articol nou',
+        'product-add':'Adaugă produs nou',
+        'type-add':'Adaugă tip nou',
+        'type-delete':'Șterge tip',
+
+        'modify-button':'Modifică',
+        'delete-button':'Șterge'
     }
 }
 

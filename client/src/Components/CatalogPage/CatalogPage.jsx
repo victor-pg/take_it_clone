@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import axios from "axios";
+import {FormattedMessage} from 'react-intl';
 
 import CatalogItem from "../CatalogItem/CatalogItem";
 
@@ -18,10 +19,18 @@ const CatalogPage = () => {
   };
 
   useEffect(() => {
-    axios
+    if(JSON.parse(localStorage.getItem('language'))==='ro'){
+      axios
       .get("/api/products")
       .then((res) => setData(res.data))
       .catch((error) => console.log(error.message));
+    }else if(JSON.parse(localStorage.getItem('language'))==='ru'){
+      axios
+      .get("/api/products/ru")
+      .then((res) => setData(res.data))
+      .catch((error) => console.log(error.message));
+    }
+    
     getProductTypes();
   }, []);
 
@@ -110,11 +119,9 @@ const CatalogPage = () => {
           </div>
         </div>
         <p className={`catalog-page-title ${m0Auto}`}>
-          Partenerii noștri sunt branduri cu renume internațional, care combină
-          funcționalitatea și designul elegant pentru afacerea dvs. Suntem
-          foarte mândri de cooperarea noastră!
+          <FormattedMessage id="catalog-title"/>
         </p>
-        <p className="catalog-page-contacts">Contactați-ne: sales@takeit.md</p>
+        <p className="catalog-page-contacts"><FormattedMessage id="catalog-contacts-info"/></p>
 
         <div className="catalog-page-content">
           {productTypes.map(({ type }) => {
@@ -141,7 +148,7 @@ const CatalogPage = () => {
       </div>
       <div className="catalog-footer">
         <div className="container">
-          <p className="catalog-footer-title">СONTACTAȚI-NE:</p>
+          <p className="catalog-footer-title"><FormattedMessage id="catalog-footer-contacts-text"/></p>
           <p className="catalog-footer-number">+373 79 33 99 33</p>
           <div className="catalog-footer-email">sales@takeit.md</div>
         </div>

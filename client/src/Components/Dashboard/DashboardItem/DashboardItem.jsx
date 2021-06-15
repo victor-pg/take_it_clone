@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Button, Card } from 'react-bootstrap';
+import {FormattedMessage} from 'react-intl';
 
 import './DashboardItem.scss';
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,8 +15,8 @@ const DashboardItem = ({ item, deleteProduct, updateProduct }) => {
                     <Card.Text className="dashboard-item-subtitle">{item.short_desc}</Card.Text>
                 </Card.Body>
                 <Card.Body>
-                    <Button variant="primary" onClick={updateProduct}>Modifică</Button>{' '}
-                    <Button variant="danger" onClick={deleteProduct}>Șterge</Button>{' '}
+                    <Button variant="primary" onClick={updateProduct}><FormattedMessage id="modify-button"/></Button>{' '}
+                    <Button variant="danger" onClick={deleteProduct}><FormattedMessage id="delete-button"/></Button>{' '}
                 </Card.Body>
             </Card>
         </Col>

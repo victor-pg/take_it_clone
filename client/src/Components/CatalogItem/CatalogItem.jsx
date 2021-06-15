@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {FormattedMessage} from 'react-intl';
 
 import './CatalogItem.scss';
 
@@ -11,7 +12,7 @@ const CatalogItem = ({ item }) => {
             <p className="catalog-item-name">{item.name}</p>
             <div className="catalog-item-short-desc">{item.short_desc}</div>
             <Link to={`/details/${item.id}`} params={{id:item.id}} >
-                <button className="catalog-item-button">Detalii</button>
+                <button className="catalog-item-button"><FormattedMessage id="details-button"/></button>
             </Link>
         </div>
     );

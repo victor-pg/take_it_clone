@@ -3,6 +3,7 @@ import axios from 'axios';
 import DashboardNav from './DashboardNav/DashboardNav';
 import DashboardNewsList from './DashboardNewsList/DashboardNewsList';
 import DashboardList from './DashboardList/DashboardList';
+import {FormattedMessage} from 'react-intl';
 
 import './Dashboard.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -48,11 +49,11 @@ const Dashboard = () => {
             <div id="dashboard">
                 <div className="form">
                     <div className="form-group">
-                        <label htmlFor="username">Nume de utilizator</label>
+                        <label htmlFor="username"><FormattedMessage id="username"/></label>
                         <input type="text" name="username" onChange={handleUsername} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="password">Parolă</label>
+                        <label htmlFor="password"><FormattedMessage id="password"/></label>
                         <input type="password" name="password" onChange={handlePassword} />
                     </div>
                     <button className="dashboard-submit-button" onClick={handleSubmit}>Login</button>

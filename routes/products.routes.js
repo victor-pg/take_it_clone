@@ -5,7 +5,7 @@ const router = Router();
 const pool = require('../db');
 
 router.get("/products", async (req, res) => {
-    const getAllProducts = `SELECT * FROM products`;
+    const getAllProducts = `SELECT id,name,description,short_desc,imgUrl,type FROM products`;
     pool.query(getAllProducts, (error, result) => {
         if (error) {
             res.status(500).send('Database error ' + error);
@@ -15,8 +15,19 @@ router.get("/products", async (req, res) => {
     })
 })
 
+router.get("/products/ru", async (req, res) => {
+    const getAllRuProducts = `SELECT id,name_ru as name,description_ru as description,short_desc_ru as short_desc,imgUrl,type FROM products`;
+    pool.query(getAllRuProducts, (error, result) => {
+        if (error) {
+            res.status(500).send('Database error ' + error);
+        } else {
+            res.status(200).json(result.rows);
+        }
+    })
+})
+
 router.get("/details/:id", async (req, res) => {
-    const getOneProduct = `SELECT * FROM products WHERE id=${req.params.id}`;
+    const getOneProduct = `SELECT id,name,description,short_desc,imgUrl,type FROM products WHERE id=${req.params.id}`;
     pool.query(getOneProduct,(error,result)=>{
         if(error){
             res.status(500).send('Database error ' + error);
@@ -25,6 +36,17 @@ router.get("/details/:id", async (req, res) => {
         }
     })
 })
+router.get("/details/ru/:id", async (req, res) => {
+    const getOneProduct = `SELECT id,name_ru as name,description_ru as description,short_desc_ru as short_desc,imgUrl,type  FROM products WHERE id=${req.params.id}`;
+    pool.query(getOneProduct,(error,result)=>{
+        if(error){
+            res.status(500).send('Database error ' + error);
+        }else{
+            res.status(200).send(result.rows);
+        }
+    })
+})
+
 
 router.delete('/products/delete/:id',async(req,res)=>{
     const {id} = req.params;

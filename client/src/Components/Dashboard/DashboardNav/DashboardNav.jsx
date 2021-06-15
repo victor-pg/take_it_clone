@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Navbar, Nav, Button,Dropdown } from 'react-bootstrap';
 import { Link as ScrollLink } from 'react-scroll';
 import ModalWindow from '../../ModalWindow/ModalWindow';
+import {FormattedMessage} from 'react-intl';
 
 import './DashboardNav.scss';
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -162,22 +163,22 @@ const DashboardNav = ({ handleLogout }) => {
         return (
             <form className="news-modal-html-content" onSubmit={saveArticle}>
                 <div className="modal-input-group">
-                    <label htmlFor="title">Titlu</label>
+                    <label htmlFor="title">Titlu/Заголовок</label>
                     <input type="text" name="title" required onChange={(e) => setTitle(e.target.value)} />
                 </div>
                 <div className="modal-input-group">
-                    <label htmlFor="subtitle">Subtitlu</label>
+                    <label htmlFor="subtitle">Subtitlu/Подзаголовок</label>
                     <input type="text"  name="subtitle" onChange={(e) => setSubtitle(e.target.value)} />
                 </div>
                 <div className="modal-input-group">
-                    <label htmlFor="content">Conținut</label>
+                    <label htmlFor="content">Conținut/Контент</label>
                     <textarea name="content" cols="30" rows="10" required onChange={(e) => setContent(e.target.value)} ></textarea>
                 </div>
                 <div className="modal-input-group">
-                    <label htmlFor="file">Imaginea</label>
+                    <label htmlFor="file">Imaginea/Картинка</label>
                     <input type="file" name="file" onChange={getImage} required />
                 </div>
-                <input type="submit" value="Adaugă" className="btn btn-primary d-block m-auto" />
+                <input type="submit" value="Adaugă/Добавить" className="btn btn-primary d-block m-auto" />
             </form>
         );
     }
@@ -189,15 +190,15 @@ const DashboardNav = ({ handleLogout }) => {
                     <input type="text" name="name" required onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div className="modal-input-group">
-                    <label htmlFor="shortDescription">Scurtă descriere</label>
-                    <input type="text" placeholder="Opțional" name="shortDescription" onChange={(e) => setShortDescription(e.target.value)} />
+                    <label htmlFor="shortDescription">Scurtă descriere/Краткое описание</label>
+                    <input type="text" placeholder="Opțional/Необязательно" name="shortDescription" onChange={(e) => setShortDescription(e.target.value)} />
                 </div>
                 <div className="modal-input-group">
-                    <label htmlFor="description">Descriere</label>
+                    <label htmlFor="description">Descriere/Описание</label>
                     <textarea name="description" cols="30" rows="10" required onChange={(e) => setDescription(e.target.value)} ></textarea>
                 </div>
                 <div className="modal-input-group">
-                    <label htmlFor="type">Tip produs</label>
+                    <label htmlFor="type">Tip produs/Тип</label>
                     <select name="type" value={type} required onChange={(e) => setType(e.target.value)}>
                         {productTypes.map(({type})=>{
                             return <option value={type} >{type}</option>
@@ -205,10 +206,10 @@ const DashboardNav = ({ handleLogout }) => {
                     </select>
                 </div>
                 <div className="modal-input-group">
-                    <label htmlFor="fileProducts">Imaginea</label>
+                    <label htmlFor="fileProducts">Imaginea/Картинка</label>
                     <input type="file" name="fileProducts" onChange={getProductsImage} required />
                 </div>
-                <input type="submit" value="Adaugă" className="btn btn-primary d-block m-auto" />
+                <input type="submit" value="Adaugă/Добавить" className="btn btn-primary d-block m-auto" />
             </form>
         );
     }
@@ -217,10 +218,10 @@ const DashboardNav = ({ handleLogout }) => {
         return (
             <form className="type-modal-html-content" onSubmit={saveNewType}>
                 <div className="modal-input-group">
-                    <label htmlFor="newType">Tipul</label>
+                    <label htmlFor="newType">Tipul/Тип</label>
                     <input type="text" name="newType" required onChange={(e) => setNewType(e.target.value)} />
                 </div>
-                <input type="submit" value="Creează" className="btn btn-primary d-block m-auto" />
+                <input type="submit" value="Creează/Создать" className="btn btn-primary d-block m-auto" />
             </form>
         );
     }
@@ -228,14 +229,14 @@ const DashboardNav = ({ handleLogout }) => {
         return (
             <form className="type-modal-html-content" onSubmit={deleteType}>
                 <div className="modal-input-group">
-                    <label htmlFor="deletedType">Tipul</label>
+                    <label htmlFor="deletedType">Tipul/Тип</label>
                     <select name="deletedType" id="deletedType" value={deletedType} onChange={(e) => setDeletedType(e.target.value)}>
                     {productTypes.map(({type})=>{
                             return <option value={type} >{type}</option>
                         })}
                     </select>
                 </div>
-                <input type="submit" value="Șterge" className="btn btn-primary d-block m-auto" />
+                <input type="submit" value="Șterge/Удалить" className="btn btn-primary d-block m-auto" />
             </form>
         );
     }
@@ -249,7 +250,7 @@ const DashboardNav = ({ handleLogout }) => {
                 <Nav className="mr-auto">
 
                     <Nav.Link>
-                        <ScrollLink className="text-muted" to="dashboard-news" spy={true} smooth={true}>Noutăți</ScrollLink>
+                        <ScrollLink className="text-muted" to="dashboard-news" spy={true} smooth={true}><FormattedMessage id="news"/></ScrollLink>
                     </Nav.Link>
 
                     {productTypes.map(({ type }) => {
@@ -262,21 +263,21 @@ const DashboardNav = ({ handleLogout }) => {
 
                     <Dropdown>
                     <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Acțiuni
+                        <FormattedMessage id="actions"/>
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
                         <Dropdown.Item>
-                            <Button variant={"warning"} onClick={changeNewsModalState} className="text-white" >Adaugă articol nou</Button>
+                            <Button variant={"secondary"} onClick={changeNewsModalState} className="text-white"><FormattedMessage id="news-add"/></Button>
                         </Dropdown.Item>
                         <Dropdown.Item >
-                            <Button variant={"success"} onClick={changeProductsModalState}>Adaugă produs nou</Button>
+                            <Button variant={"secondary"} onClick={changeProductsModalState}><FormattedMessage id="product-add"/></Button>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                            <Button variant={"primary"} onClick={changeNewTypeModalState}>Adaugă tip nou</Button>
+                            <Button variant={"secondary"} onClick={changeNewTypeModalState}><FormattedMessage id="type-add"/></Button>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                            <Button variant={"secondary"} onClick={changeDeleteTypeModalState}>Șterge tip</Button>
+                            <Button variant={"secondary"} onClick={changeDeleteTypeModalState}><FormattedMessage id="type-delete"/></Button>
                         </Dropdown.Item>
                         <Dropdown.Item>
                             <Button onClick={handleLogout} variant={"danger"}>Logout</Button>
@@ -306,28 +307,28 @@ const DashboardNav = ({ handleLogout }) => {
 
                 {showNewsModal ?
                     <ModalWindow
-                        message="Adaugă un articol nou"
+                        message={<FormattedMessage id="news-add"/>}
                         customStyles={customNewsStyles}
                         htmlContent={newsModalHtmlContent}
                     />
                     : null}
                 {showProductsModal ?
                     <ModalWindow
-                        message="Adaugă un produs nou"
+                        message={<FormattedMessage id="product-add"/>}
                         customStyles={customProductsStyles}
                         htmlContent={productsModalHtmlContent}
                     />
                     : null}
                 {showNewTypeModal ?
                     <ModalWindow
-                        message="Adaugă un tip nou"
+                        message={<FormattedMessage id="type-add"/>}
                         customStyles={null}
                         htmlContent={newTypeHtmlContent}
                     />
                     : null}
                 {showDeleteTypeModal ?
                     <ModalWindow
-                        message="Alegeți tipul"
+                        message={<FormattedMessage id="type-delete"/>}
                         customStyles={null}
                         htmlContent={deleteTypeHtmlContent}
                     />
