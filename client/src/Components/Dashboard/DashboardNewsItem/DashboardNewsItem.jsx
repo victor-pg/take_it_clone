@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Button, Card } from 'react-bootstrap';
+import {FormattedMessage} from 'react-intl';
 
 import './DashboardNewsItem.scss';
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,8 +15,8 @@ const DashboardNewsItem = ({ item,deleteArticle,updateArticle }) => {
                     <Card.Text>{item.subtitle}</Card.Text>
                 </Card.Body>
                 <Card.Body>
-                    <Button variant="primary" onClick={updateArticle}>Modifică</Button>{' '}
-                    <Button variant="danger" onClick={deleteArticle}>Șterge</Button>{' '}
+                    <Button variant="primary" onClick={updateArticle}><FormattedMessage id="modify-button"/></Button>{' '}
+                    <Button variant="danger" onClick={deleteArticle}><FormattedMessage id="delete-button"/></Button>{' '}
                 </Card.Body>
             </Card>
         </Col>

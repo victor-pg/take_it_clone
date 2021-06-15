@@ -11,14 +11,20 @@ import './DashboardNav.scss';
 const DashboardNav = ({ handleLogout }) => {
     const [showNewsModal, setShowNewsModal] = useState(false);
     const [title, setTitle] = useState('');
+    const [titleRu, setTitleRu] = useState('');
     const [subtitle, setSubtitle] = useState('');
+    const [subtitleRu, setSubtitleRu] = useState('');
     const [content, setContent] = useState('');
+    const [contentRu, setContentRu] = useState('');
     const [file, setFile] = useState('');
 
     const [showProductsModal, setShowProductsModal] = useState(false);
     const [name, setName] = useState('');
+    const [nameRu, setNameRu] = useState('');
     const [shortDescription, setShortDescription] = useState('');
+    const [shortDescriptionRu, setShortDescriptionRu] = useState('');
     const [description, setDescription] = useState('');
+    const [descriptionRu, setDescriptionRu] = useState('');
     const [type, setType] = useState('ccl');
     const [fileProducts, setFileProducts] = useState('');
 
@@ -82,8 +88,11 @@ const DashboardNav = ({ handleLogout }) => {
         // my 
 
         formData.append('title', title);
+        formData.append('titleRu', titleRu);
         formData.append('subtitle', subtitle);
+        formData.append('subtitleRu', subtitleRu);
         formData.append('content', content);
+        formData.append('contentRu', contentRu);
 
         // end my
 
@@ -110,8 +119,11 @@ const DashboardNav = ({ handleLogout }) => {
         // my 
 
         formData.append('name', name);
+        formData.append('nameRu', nameRu);
         formData.append('shortDescription', shortDescription);
+        formData.append('shortDescriptionRu', shortDescriptionRu);
         formData.append('description', description);
+        formData.append('descriptionRu', descriptionRu);
         formData.append('type', type);
 
         // end my
@@ -163,16 +175,28 @@ const DashboardNav = ({ handleLogout }) => {
         return (
             <form className="news-modal-html-content" onSubmit={saveArticle}>
                 <div className="modal-input-group">
-                    <label htmlFor="title">Titlu/Заголовок</label>
+                    <label htmlFor="title">Titlu</label>
                     <input type="text" name="title" required onChange={(e) => setTitle(e.target.value)} />
                 </div>
                 <div className="modal-input-group">
-                    <label htmlFor="subtitle">Subtitlu/Подзаголовок</label>
+                    <label htmlFor="titleRu">Заголовок</label>
+                    <input type="text" name="titleRu" required onChange={(e) => setTitleRu(e.target.value)} />
+                </div>
+                <div className="modal-input-group">
+                    <label htmlFor="subtitle">Subtitlu</label>
                     <input type="text"  name="subtitle" onChange={(e) => setSubtitle(e.target.value)} />
                 </div>
                 <div className="modal-input-group">
-                    <label htmlFor="content">Conținut/Контент</label>
+                    <label htmlFor="subtitleRu">Подзаголовок</label>
+                    <input type="text"  name="subtitleRu" onChange={(e) => setSubtitleRu(e.target.value)} />
+                </div>
+                <div className="modal-input-group">
+                    <label htmlFor="content">Conținut</label>
                     <textarea name="content" cols="30" rows="10" required onChange={(e) => setContent(e.target.value)} ></textarea>
+                </div>
+                <div className="modal-input-group">
+                    <label htmlFor="contentRu">Контент</label>
+                    <textarea name="contentRu" cols="30" rows="10" required onChange={(e) => setContentRu(e.target.value)} ></textarea>
                 </div>
                 <div className="modal-input-group">
                     <label htmlFor="file">Imaginea/Картинка</label>
@@ -190,12 +214,24 @@ const DashboardNav = ({ handleLogout }) => {
                     <input type="text" name="name" required onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div className="modal-input-group">
-                    <label htmlFor="shortDescription">Scurtă descriere/Краткое описание</label>
+                    <label htmlFor="name">Имя</label>
+                    <input type="text" name="name_ru" required onChange={(e)=>setNameRu(e.target.value)} />
+                </div>
+                <div className="modal-input-group">
+                    <label htmlFor="shortDescription">Scurtă descriere</label>
                     <input type="text" placeholder="Opțional/Необязательно" name="shortDescription" onChange={(e) => setShortDescription(e.target.value)} />
                 </div>
                 <div className="modal-input-group">
-                    <label htmlFor="description">Descriere/Описание</label>
+                    <label htmlFor="name">Краткое описание</label>
+                    <input type="text" name="short_desc_ru" placeholder="Необязательно" required onChange={(e)=>setShortDescriptionRu(e.target.value)} />
+                </div>
+                <div className="modal-input-group">
+                    <label htmlFor="description">Descriere</label>
                     <textarea name="description" cols="30" rows="10" required onChange={(e) => setDescription(e.target.value)} ></textarea>
+                </div>
+                <div className="modal-input-group">
+                    <label htmlFor="description">Описание</label>
+                    <textarea name="description_ru" cols="30" rows="10" required onChange={(e) => setDescriptionRu(e.target.value)} ></textarea>
                 </div>
                 <div className="modal-input-group">
                     <label htmlFor="type">Tip produs/Тип</label>

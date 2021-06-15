@@ -16,8 +16,11 @@ const DashboardList = () => {
 
   const [currentId, setCurrentId] = useState(0);
   const [name, setName] = useState("");
+  const [nameRu, setNameRu] = useState("");
   const [short_desc, setShortDesc] = useState("");
+  const [short_desc_ru, setShortDescRu] = useState("");
   const [description, setDescription] = useState("");
+  const [descriptionRu, setDescriptionRu] = useState("");
   const [type, setType] = useState("");
   const [newImage, setNewImage] = useState("");
 
@@ -50,7 +53,7 @@ const DashboardList = () => {
   };
 
   const getCurrentProduct = async (id) => {
-    await axios
+      await axios
       .get(`/api/details/${id}`)
       .then((res) => {
         const { name, short_desc, description, type } = res.data[0];
@@ -58,8 +61,35 @@ const DashboardList = () => {
         setShortDesc(short_desc);
         setDescription(description);
         setType(type);
+        console.log('short_desc : ');
+        console.log(res.data[0]);
       })
-      .catch((err) => console.log(""));
+      .catch((error) => console.log(error.message));
+    
+      await axios
+      .get(`/api/details/ru/${id}`)
+      .then((res) => {
+        const { name, short_desc, description, type } = res.data[0];
+        setNameRu(name);
+        setShortDescRu(short_desc);
+        setDescriptionRu(description);
+        setType(type);
+        console.log('short_desc_ru : ');
+        console.log(res.data[0]);
+      })
+      .catch((error) => console.log(error.message));
+    
+
+    // await axios
+    //   .get(`/api/details/${id}`)
+    //   .then((res) => {
+    //     const { name, short_desc, description, type } = res.data[0];
+    //     setName(name);
+    //     setShortDesc(short_desc);
+    //     setDescription(description);
+    //     setType(type);
+    //   })
+    //   .catch((err) => console.log(""));
   };
 
   const getProductTypes = async () => {
@@ -85,12 +115,33 @@ const DashboardList = () => {
           />
         </div>
         <div className="modal-input-group">
+          <label htmlFor="name">Имя</label>
+          <input
+            type="text"
+            name="nameRu"
+            key="super-secret-key"
+            defaultValue={nameRu}
+            onChange={(e) => {
+              setNameRu(e.target.value);
+            }}
+          />
+        </div>
+        <div className="modal-input-group">
           <label htmlFor="short_desc">Scurtă descriere</label>
           <input
             type="text"
             name="short_desc"
             defaultValue={short_desc}
             onChange={(e) => setShortDesc(e.target.value)}
+          />
+        </div>
+        <div className="modal-input-group">
+          <label htmlFor="short_desc">Краткое описание</label>
+          <input
+            type="text"
+            name="short_desc_ru"
+            defaultValue={short_desc_ru}
+            onChange={(e) => setShortDescRu(e.target.value)}
           />
         </div>
         <div className="modal-input-group">
@@ -104,7 +155,17 @@ const DashboardList = () => {
           ></textarea>
         </div>
         <div className="modal-input-group">
-          <label htmlFor="type">Tip produs</label>
+          <label htmlFor="description">Описание</label>
+          <textarea
+            name="descriptionRu"
+            cols="30"
+            rows="10"
+            defaultValue={descriptionRu}
+            onChange={(e) => setDescriptionRu(e.target.value)}
+          ></textarea>
+        </div>
+        <div className="modal-input-group">
+          <label htmlFor="type">Tip produs/Тип</label>
           <select
             name="type"
             defautlValue={type}
@@ -116,7 +177,7 @@ const DashboardList = () => {
           </select>
         </div>
         <div className="modal-input-group">
-          <label htmlFor="file">Imaginea</label>
+          <label htmlFor="file">Imaginea/Картинка</label>
           <input
             type="file"
             name="file"
@@ -125,7 +186,7 @@ const DashboardList = () => {
         </div>
         <input
           type="submit"
-          value="Modifică"
+          value="Modifică/Изменить"
           className="btn btn-primary d-block m-auto"
           onClick={saveUpdate}
         />
@@ -141,8 +202,11 @@ const DashboardList = () => {
     // my
 
     formData.append("name", name);
+    formData.append("nameRu", nameRu);
     formData.append("short_desc", short_desc);
+    formData.append("short_desc_ru", short_desc_ru);
     formData.append("description", description);
+    formData.append("descriptionRu", descriptionRu);
     formData.append("type", type);
 
     console.log(`Name : ${name}, SDesc : ${short_desc}, Desc : ${description}`);

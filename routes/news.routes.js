@@ -5,8 +5,18 @@ const router = Router();
 const pool = require('../db');
 
 router.get("/news", async (req, res) => {
-    const getAllNews = `SELECT * FROM news`;
+    const getAllNews = `SELECT id,title,subtitle,imgurl,text FROM news`;
     pool.query(getAllNews, (error, result) => {
+        if (error) {
+            res.status(500).send('Database error ' + error);
+        } else {
+            res.status(200).json(result.rows);
+        }
+    })
+})
+router.get("/news/ru", async (req, res) => {
+    const getAllRuNews = `SELECT id,title_ru as title,subtitle_ru as subtitle,imgurl,text_ru as text FROM news`;
+    pool.query(getAllRuNews, (error, result) => {
         if (error) {
             res.status(500).send('Database error ' + error);
         } else {
@@ -29,8 +39,19 @@ router.get("/newest", async (req, res) => {
 
 router.get("/news/:id", async (req, res) => {
     const { id } = req.params;
-    const getOneItem = `SELECT * FROM news WHERE id=${id}`;
+    const getOneItem = `SELECT id,title,subtitle,imgurl,text FROM news WHERE id=${id}`;
     await pool.query(getOneItem, (err, result) => {
+        if (err) {
+            res.status(500).send('Database error ' + err)
+        } else {
+            res.status(200).json(result.rows);
+        }
+    })
+})
+router.get("/news/ru/:id", async (req, res) => {
+    const { id } = req.params;
+    const getOneRuItem = `SELECT id,title_ru as title,subtitle_ru as subtitle,imgurl,text_ru as text FROM news WHERE id=${id}`;
+    await pool.query(getOneRuItem, (err, result) => {
         if (err) {
             res.status(500).send('Database error ' + err)
         } else {

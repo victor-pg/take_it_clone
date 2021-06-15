@@ -12,8 +12,11 @@ const createNewsTable = `CREATE TABLE IF NOT EXISTS news (
     title varchar(450) NOT NULL,
     subtitle varchar(450) NOT NULL,
     imgUrl varchar(450) NOT NULL ,
-    text varchar(450) NOT NULL,
-    timestamp timestamp default current_timestamp
+    text text NOT NULL,
+    timestamp timestamp default current_timestamp,
+    title_ru varchar(450) NOT NULL,
+    subtitle_ru varchar(450) NOT NULL,
+    text_ru text NOT NULL
     )`;
 
 pool.query(createNewsTable, (err, res) => {
