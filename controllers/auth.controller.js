@@ -35,8 +35,9 @@ class AuthController {
                 if(result.rowCount!=1) { return res.status(404).json({message:`Utilizatorul ${username} nu a fost gasit`}) }
                 else{
                     const validPassword = bcrypt.compareSync(password,result.rows[0].password);
+                    const token = jwt.sign({id:result.rows[0].id},'ittake')
                     if(validPassword){
-                        return res.status(200).json({username,isLoggedIn:true})
+                        return res.status(200).json({username,isLoggedIn:true,token})
                     }else{
                         return res.status(400).json({message:'Datele nu coincid'})
                     }                

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import DashboardNav from './DashboardNav/DashboardNav';
 import DashboardNewsList from './DashboardNewsList/DashboardNewsList';
 import DashboardList from './DashboardList/DashboardList';
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import './Dashboard.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Dashboard = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') || 'false');
+    const [isLoggedIn, setIsLoggedIn] = useState('false');
 
     const handleUsername = (e) => {
         setUsername(e.target.value);
@@ -20,17 +20,22 @@ const Dashboard = () => {
         setPassword(e.target.value);
     }
 
+    useEffect(()=>{
+        const check = JSON.parse(localStorage.getItem('token'));
+        if(!check) return setIsLoggedIn('false');
+        if(check) return setIsLoggedIn('true')
+    },[])
 
     const handleSubmit = () => {
         axios.post('/api/auth/login', { username: username, password: password })
             .then(res => {
-                localStorage.setItem('isLoggedIn', true);
+                localStorage.setItem('token', JSON.stringify(res.data.token));
                 setIsLoggedIn('true');
             })
             .catch(err => {
-                if(username==='' || password===''){
+                if (username === '' || password === '') {
                     alert('Completati toate campurile')
-                }else{
+                } else {
                     alert('Date gresite')
                 }
             })
@@ -38,22 +43,22 @@ const Dashboard = () => {
     const handleLogout = () => {
         axios.post('/api/auth/logout', { username })
             .then(res => {
-                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('token');
                 setIsLoggedIn('false');
             })
             .catch(err => console.log(err));
     }
 
-    if (isLoggedIn==="false") {
+    if (isLoggedIn === "false") {
         return (
             <div id="dashboard">
                 <div className="form">
                     <div className="form-group">
-                        <label htmlFor="username"><FormattedMessage id="username"/></label>
+                        <label htmlFor="username"><FormattedMessage id="username" /></label>
                         <input type="text" name="username" onChange={handleUsername} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="password"><FormattedMessage id="password"/></label>
+                        <label htmlFor="password"><FormattedMessage id="password" /></label>
                         <input type="password" name="password" onChange={handlePassword} />
                     </div>
                     <button className="dashboard-submit-button" onClick={handleSubmit}>Login</button>
@@ -64,8 +69,8 @@ const Dashboard = () => {
         return (
             <div id="dashboard">
                 <DashboardNav handleLogout={handleLogout} />
-                <DashboardNewsList/>
-                <DashboardList/>
+                <DashboardNewsList />
+                <DashboardList />
             </div>
         );
     }
